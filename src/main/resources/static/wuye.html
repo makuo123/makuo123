@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/resetcss.css">
+    <link rel="stylesheet" href="../static/css/zmc_style.css">
+    <title>项目房源</title>
+</head>
+
+<body id="houseSource" ms-controller="wuyebox">
+    <div id="main">
+        <header class="header clearfix">
+            <a href="../index.html" class="fl head-tips">统计总览</a>
+            <div class="head-title">
+                <span>上饶市数字住建大数据分析平台</span>
+            </div>
+            <div class="fr head-action">
+                <span>系统管理员,欢迎您!</span>
+                <a href="javascript:;" class="logout">[ 退出 ]</a>
+            </div>
+        </header>
+        <div class="page-content clearfix">
+            <div class="fl left-content">
+                <div class="panel-box top-chart">
+                    <div class="panel-title">
+                        <div class="title-content"><span class="title-text">维修项目统计</span></div>
+                    </div>
+                    <div class="panel-content" id="barEchart"></div>
+                </div>
+                <div class="panel-box bottom-chart">
+                    <div class="panel-title">
+                        <div class="title-content"><span class="title-text">维修项目资金情况</span></div>
+                    </div>
+                    <div class="panel-content" id="pieEchart"></div>
+                </div>
+            </div>
+            <div class="fl right-content">
+                <div id="BMap"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../plugin/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="../plugin/echart/echarts.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=FlbTE4ZtGNXHCXw5ANQyHCWtEae8RToW">
+    </script>
+    <script type="text/javascript" src="../plugin/InfoBox_min.js"></script>
+    <script src="../static/js/wuye.js"></script>
+    <script src="../plugin/avalon/avalon.js"></script>
+    <script src="../api/ajax.js"></script>
+    <script>
+        //数据对接
+        avalon.config({
+            debug: false
+        });
+        var vm = avalon.define({
+            $id: 'wuyebox',
+            msg: '',
+        });
+        $(document).ready(function() {
+
+        })
+    </script>
+</body>
+
+</html>

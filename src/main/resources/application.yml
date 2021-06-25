@@ -1,0 +1,32 @@
+# 监控服务名
+#spring:
+#  application:
+#    name: monitor-server
+# 监控中心 端口
+#server:
+#  port: 9090
+# include 暴露端点 (不暴露时)
+#management:
+#  endpoints:
+#   web:
+#     exposure:
+#        include: "*"
+    #  注释后 不显示 logfile 模块
+#    logfile:
+#      external-file: E:/log/output.log  #指向日志文件地址，需与LogBack配置的日志地址一致
+  # 在访问/actuator/health时显示完整信息
+#  endpoint:
+#    health:
+#     show-details: always
+
+# 配置一个账号和密码
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+
+shenyan:
+  ipport: http://106.52.142182:8002
+  token: 554b5205xc9c7x4db1x835fxa8382014b145
+  enable: true #是否调用远程接口 true 开启，false 关闭

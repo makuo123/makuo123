@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+</head>
+
+<body>
+<div class="widget-box transparent" style="width:100%;">
+    <div class="widget-header widget-header-flat">
+        <h4 class="lighter">
+            <i class="icon-signal"></i>
+            数据统计
+        </h4>
+        <!--<input type="button" value="生成曲线图" id='btnAjax'>-->
+
+
+        <div class="widget-toolbar">
+            <a href="#" data-action="collapse">
+                <i class="icon-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="widget-body">
+        <div class="widget-main padding-4">
+            <div id="sales-charts"></div>
+        </div><!-- /widget-main -->
+    </div><!-- /widget-body -->
+</div><!-- /widget-box -->
+
+
+<!-- basic scripts -->
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='./assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");
+</script>
+
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='./assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");
+</script>
+<![endif]-->
+
+<script src="./assets/js/bootstrap.min.js"></script>
+
+<script src="./assets/js/flot/jquery.flot.min.js"></script>
+
+<script language="javascript" type="text/javascript" src="./assets/js/flot/jquery.flot.time.js"></script>
+
+<!-- inline scripts related to this page -->
+
+
+<script type="text/javascript">
+    var arr = []
+    $(function () {
+
+        getDate();
+
+        function getDate() {
+
+            $.ajax({
+                    type: "get",
+                    url: "/stock/list",
+                    dataType: "json",
+                    success: function (res) {
+                        var list = res.data
+                        //console.log(list)
+
+                        for (var $i = 0; $i < list.length; $i++) {
+                            let obj = {
+                                label: list[$i].name,
+                                data: []
+                            }
+                            for (var j = 0; j < list[$i].list.length; j++) {
+                                obj.data.push([parseInt(list[$i].list[j].tradeTime), list[$i].list[j].endPrice]);
+                            }
+                            arr.push(obj)
+
+                        }
+                        // console.log(arr)
+
+                        ttt(arr)
+
+                    }
+                }
+            );
+        };
+
+        function ttt(arr) {
+            var sales_charts = $('#sales-charts').css({'width': '100%', 'height': '500px'});
+            // console.log(arr)
+            $.plot("#sales-charts", arr, {
+                hoverable: true,
+                shadowSize: 0,
+                series: {
+                    lines: {show: true},
+                    points: {show: true}
+                },
+                xaxis: {
+                    mode: "time",
+                    timeformat: "%y/%m/%d",
+                    minTickSize: [1, "day"],//间隔是一天
+                    Timezone: null
+                },
+                yaxis: {
+                    ticks: 10,
+                    min: 0,
+                    max: 35,
+                    tickDecimals: 3
+                },
+                grid: {
+                    backgroundColor: {colors: ["#fff", "#fff"]},
+                    borderWidth: 1,
+                    borderColor: '#555'
+                }
+            });
+        }
+    });
+
+    jQuery(function ($) {
+
+    })
+</script>
+
+</body>
+</html>

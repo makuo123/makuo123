@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <title>Highcharts Example</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <script type="text/javascript" src="/watch/js/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+</head>
+<body>
+<script src="../../js/highcharts.js"></script>
+<script src="../../js/modules/exporting.js"></script>
+<script src="../../js/themes/gray.js"></script>
+<script src="template.js"></script>
+<div id="radioContainer" class="well"></div>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script type="text/template" id="radioTpl">
+
+
+    <div class="well">
+        <%
+        for ( var key in radios ){
+        var radio = radios[key];
+        if ( radio ){
+        %>
+        <label style="margin: 20px;">
+            <input type="radio" name="radio" value="<%=radio%>" data-tag="<%=radio%>" class="<%=radio%> item">
+            <%=radio%>
+        </label>
+        <%
+        }
+        }
+        %>
+    </div>
+
+
+</script>
+<script>
+    ;
+    (function(window){
+
+
+        var _util = function(){
+
+
+            this.render = function(container, tplId, data){
+
+
+                var templateParser = window._bt.template;
+
+
+                var html = templateParser(tplId, data);
+
+
+                $(container).html(html);
+
+
+            }
+
+
+        };
+
+
+        window.util = new _util();
+
+
+    })(window);
+
+
+</script>
+<script>
+    ;
+    (function (window) {
+
+
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+
+        var ManageModule = function (config) {
+
+
+            this.config = config;
+
+
+            for (var key in config) {
+
+
+                this.config[key] = config[key];
+
+
+            }
+
+
+        };
+
+
+        ManageModule.prototype = {
+
+
+            constructor: ManageModule,
+
+
+            timeCounterId: null,
+
+
+            config: {
+
+
+                tplId: "",
+                containerId: "",
+                chartContainerId: "",
+                prefix: "",
+                seriesUrl: "gethistory.php",
+                realTimeDataUrl: "./getnew.php"
+
+
+            },
+
+
+            initial: function () {
+
+
+                this.bindEvtListener();
+
+
+                this.refresh("cpu_idle");
+
+
+            },
+
+
+            bindEvtListener: function () {
+
+
+                var that = this;
+
+
+                var container = this.config['containerId'];
+
+
+                $(container).on("click", ".item", function(event){
+
+
+                    var tag = $(this).data("tag");
+
+
+                    that.refresh(tag);
+
+
+                });
+
+
+            },
+
+
+            refresh: function(tag){
+
+
+                var that = this;
+
+
+                var seriesUrl = that.config['seriesUrl'];
+
+
+                if (tag){
+
+
+                    that._load(seriesUrl, function(data){
+
+
+                        that._refreshRadio(data);
+
+
+                        that._setRadioActive(tag);
+
+
+                        that._refreshCharts(data, tag);
+
+
+                    });
+
+
+                }
+
+
+            },
+
+
+            _refreshCharts: function(data, tag){
+
+
+                var that = this;
+
+
+                var temp = {};
+
+
+                var realTimeDataUrl = this.config['realTimeDataUrl'];
+
+
+                var chartContainer = this.config['chartContainerId'];
+
+
+                var series = that._getDataOfDisplayChart(data, tag, temp);
+
+
+                if ( this.timeCounterId ){
+
+
+                    clearInterval(this.timeCounterId);
+
+
+                }
+
+
+                var chartConfig = {
+
+
+                    chart: {
+                        type: 'spline',
+                        animation: Highcharts.svg,
+                        marginRight: 10,
+                        events: {
+                            load: function () {
+                                // set up the updating of the chart each second
+                                var series = this.series;
+
+
+                                that.timeCounterId = setInterval(function(){
+
+
+                                    that._load(realTimeDataUrl, function(data){
+
+
+                                        for ( var key in data){
+
+
+                                            var value = data[key];
+                                            var ip = value['ip'];
+                                            var i = temp[ip];
+                                            var serie = series[i];
+
+
+                                            if ( serie ){
+                                                var x = value.runtime * 1000;
+//                                        var x = (new Date()).getTime();
+                                                var y = parseFloat(value[tag]);
+                                                serie.addPoint([x, y], true, false);
+                                            }
+
+
+                                        }
+
+
+                                    });
+
+
+                                }, 1000);
+
+
+                            }
+                        }
+                    },
+                    title: {
+                        text: tag + '比率'
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        tickPixelInterval: 150
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Value'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
+                    },
+                    tooltip: {
+                        formatter: function() {
+                            return '<b>'+ this.series.name +'</b><br/>'+
+                                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+                                Highcharts.numberFormat(this.y, 2);
+                        }
+                    },
+                    legend: {
+                        enabled: true
+                    },
+                    exporting: {
+                        enabled: true
+                    },
+                    series: series
+                };
+
+
+                $(chartContainer).highcharts(chartConfig);
+
+
+            },
+
+
+            _refreshRadio: function(data){
+
+
+                if (data){
+
+
+                    var tplId = this.config['tplId'];
+                    var container = this.config['containerId'];
+                    var radios = [];
+                    var filter = {
+                        ip: true,
+                        runtime: true
+                    };
+                    var item = data[0];
+
+
+                    for ( var key in item ){
+
+
+                        if ( !filter[key] ){
+
+
+                            radios.push(key);
+
+
+                        }
+
+
+                    }
+
+
+                    window.util.render(container, tplId, {radios: radios});
+
+
+                }
+
+
+            },
+
+
+            _setRadioActive: function(tag){
+
+
+                var container = this.config['containerId'];
+
+
+                $(container).find("." + tag).prop("checked","checked");
+
+
+            },
+
+
+            _getDataOfDisplayChart: function(data, tag, temp){
+
+
+                var map = {};
+
+
+                var series = [];
+
+
+                for ( var key in data ){
+
+
+                    var value = data[key];
+                    var ip = value['ip'];
+
+
+                    if ( !map[ip] ){
+
+
+                        map[ip] = [];
+
+
+                    }
+
+
+                    map[ip].push(value);
+
+
+                }
+
+
+                //var time = (new Date()).getTime();
+
+
+                for ( var _ip in map ){
+
+
+                    var list = map[_ip];
+
+
+                    var item = {
+
+
+                        name: _ip,
+                        data: []
+
+
+                    };
+
+
+                    for ( var i = list.length - 1; i >= 0; i-- ){
+
+
+                        var runtime = list[i].runtime * 1000;
+
+
+                        var tag_data = list[i][tag];
+
+
+                        item.data.push({
+                            // x: time - i * 1000,
+                            x: runtime,
+                            y: parseFloat(tag_data)
+                        });
+
+
+                    }
+
+
+                    temp[_ip] = series.length;
+                    series.push(item);
+
+
+                }
+
+
+                return series;
+
+
+            },
+
+
+            _load: function (action, callBack) {
+
+
+                var url = this.config['prefix'] + action;
+
+
+                if (url) {
+
+
+                    $.ajax({
+                        url: url,
+                        type: "get",
+                        async: true,
+                        dataType: "json",
+                        success: function (data) {
+
+
+                            callBack.call(this, data);
+
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+                            console.log("XMLHttpRequest:", XMLHttpRequest);
+                            console.log("textStatus", textStatus);
+                            console.log("errorThrown", errorThrown);
+
+
+                        }
+                    });
+
+
+                }
+
+
+            }
+
+
+        };
+
+
+        window.ManageModule = ManageModule;
+
+
+    })(window);
+</script>
+<script>
+
+
+    var manager = new ManageModule({
+
+
+        tplId: "radioTpl",
+        containerId: "#radioContainer",
+        chartContainerId: "#container",
+        prefix: "",
+        seriesUrl: "./gethistory.php",
+        realTimeDataUrl: "./getnew.php"
+
+
+    });
+
+
+    manager.initial();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,2175 @@
+@charset "UTF-8";
+body {
+    background: #001837;
+}
+
+.nxl {
+    color: red;
+}
+
+.flex-ks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.kstag {
+    color: red;
+}
+
+
+/* .ms-controller {
+    visibility: hidden
+} */
+
+#main {
+    width: 1920px;
+    background: url(../img/bg/bg.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+
+/* 左浮动 */
+
+.fl {
+    float: left;
+}
+
+
+/* 右浮动 */
+
+.fr {
+    float: right;
+}
+
+
+/*颜色*/
+
+.green {
+    color: #14ffca !important;
+}
+
+.yellow {
+    color: #d4b147 !important;
+}
+
+.blue {
+    color: #3f8eb9 !important;
+}
+
+.red {
+    color: #a02222 !important;
+}
+
+.purple {
+    color: #c7aef0 !important;
+}
+
+
+/*头部样式*/
+
+.header {
+    position: relative;
+    padding: 0 30px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #001837;
+    box-shadow: 0 3px 5px #2e4a6f;
+}
+
+.header .head-tips {
+    color: #b8ccee;
+    font-size: 16px;
+}
+
+.header .head-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    max-width: 450px;
+    height: 80px;
+    margin: 0 auto;
+    background: url(../img/bg/title_bg.png) no-repeat center;
+    background-size: 100% 100%;
+    text-align: center;
+    font-size: 22px;
+    color: #88baff;
+    font-weight: bold;
+    z-index: 999;
+}
+
+.header .head-title span {
+    -webkit-line-clamp: 2;
+    background-image: -webkit-linear-gradient(bottom, #92c6e7, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header .head-action {
+    font-size: 16px;
+    color: #b8ccee;
+}
+
+.header .head-action .logout {
+    margin-left: 20px;
+    color: #d4d286;
+}
+
+
+/*面板样式*/
+
+.panel-box {
+    position: relative;
+    width: 100%;
+    border: 1px solid #164774;
+    box-shadow: 0 0 5px #18466F;
+    border-radius: 5px;
+    background-color: #07233d;
+    background-size: 45px 40px;
+}
+
+.panel-box .panel-title {
+    width: 250px;
+    height: 40px;
+    background: #07233d url(../img/bg/border_title.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: -14px;
+    left: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 12px;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.panel-box .panel-title .title-content {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+}
+
+.panel-box .panel-title img {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.panel-box .panel-title .title-text {
+    color: #fff;
+    vertical-align: middle;
+    font-size: 22px;
+    font-weight: bold;
+    -webkit-line-clamp: 2;
+    background-image: -webkit-linear-gradient(bottom, #92c6e7, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.panel-box .panel-content {
+    padding: 35px 15px 15px;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*数字翻牌器*/
+
+.num-box>li,
+.num-box>span {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+.num-box .num-item {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.num-box .num-item .item-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.num-box .num-item .item-box span {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+/*弹框样式*/
+
+.full {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.modal-box {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 900px;
+    height: 600px;
+    margin: auto;
+    z-index: 999;
+    border: 3px solid #00224D;
+    background-color: #FEFEFD;
+}
+
+.modal-box .modal-title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    background-color: #004397;
+    color: #fff;
+}
+
+.modal-box .modal-title .title-text {
+    display: inline-block;
+}
+
+.modal-box .modal-title .modal-action {
+    height: 40px;
+}
+
+.modal-box .modal-title .modal-action li {
+    display: inline-block;
+    padding: 10px 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.modal-box .modal-title .modal-action li img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.modal-box .modal-content {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-box .modal-content .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.modal-box .modal-content .data-table tr:nth-child(even) {
+    background: #F6F6F5
+}
+
+.modal-box .modal-content .data-table td {
+    padding: 5px;
+}
+
+.modal-box .modal-content .data-table thead {
+    font-weight: normal;
+    background-color: #CDE9FF;
+}
+
+.modal-box .modal-content .data-table thead th {
+    padding: 5px 0;
+    /* font-size: 16px; */
+    background-color: #CDE9FF;
+    text-align: center;
+}
+
+.modal-box .modal-content .data-table tbody .trbg {
+    background-color: #F6F6F5;
+}
+
+.modal-box .modal-content .data-table tfoot {
+    background-color: #E1FAFE;
+}
+
+.modal-box .modal-content #tableChart {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*主体样式*/
+
+.main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px 40px 50px;
+}
+
+
+/*地图容器*/
+
+.map-content {
+    position: relative;
+    width: 100%;
+    height: 715px;
+}
+
+.map-content #gdMap {
+    width: 100%;
+    height: 715px;
+}
+
+.map-content .new-total {
+    position: absolute;
+    top: 195px;
+    width: 436px;
+    height: 375px;
+}
+
+.map-content .today-add {
+    left: 0;
+}
+
+.map-content .total {
+    right: 0;
+}
+
+.map-content .data-list {
+    font-size: 0;
+}
+
+.map-content .data-list .data-item {
+    display: inline-block;
+    width: 200px;
+    height: 160px;
+    text-align: center;
+    padding: 30px 0;
+    background: url(../img/bg/top_left.png) no-repeat top left, url(../img/bg/top_right.png) no-repeat top right, url(../img/bg/bottom_left.png) no-repeat bottom left, url(../img/bg/bottom_right.png) no-repeat bottom right #00385B;
+    background-size: 20px 20px;
+    vertical-align: top;
+}
+
+.map-content .data-list .data-item:first-child {
+    margin-bottom: 3px;
+}
+
+.map-content .data-list .data-item:nth-child(2n-1) {
+    margin-right: 3px;
+}
+
+.map-content .data-list .data-item .item-icon {
+    background-repeat: no-repeat;
+    background-size: 50px 45px;
+    background-position: top center;
+    padding-top: 50px;
+    color: #91acc6;
+    font-size: 12px;
+}
+
+.map-content .data-list .data-item .item-num {
+    height: 35px;
+    font-size: 32px;
+}
+
+.map-content .data-list .data-item .item-num .new-num .num-item {
+    width: 20px;
+    height: 35px;
+}
+
+.map-content .data-list .data-item .item-num .new-num span {
+    font-size: 32px;
+}
+
+
+/*智慧工地左边计数器布局*/
+
+.gjj-box .data-list {
+    font-size: 0;
+}
+
+.gjj-box .data-list .data-item {
+    display: inline-block;
+    width: 200px;
+    height: 90px;
+    text-align: center;
+    line-height: 98px;
+    padding: 3px 0;
+    background: url(../img/bg/top_left.png) no-repeat top left, url(../img/bg/top_right.png) no-repeat top right, url(../img/bg/bottom_left.png) no-repeat bottom left, url(../img/bg/bottom_right.png) no-repeat bottom right #00385B;
+    background-size: 50px 20px;
+    vertical-align: top;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.gjj-box .data-list .data-item .item-icon {
+    color: #91acc6;
+    font-size: 18px;
+}
+
+.gjj-box .data-list .data-item .item-num {
+    padding-left: 15px;
+}
+
+.gjj-box .data-list .data-item .item-num .new-num .num-item {
+    width: 20px;
+    height: 35px;
+    position: relative;
+    top: -88px;
+    left: 50px;
+    font-size: 20px;
+}
+
+
+/*数据展示容器布局*/
+
+.data-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-content .left-content,
+.data-content .right-content {
+    flex: 1;
+}
+
+.data-content .left-content {
+    margin-right: 30px;
+}
+
+
+/*房地产监管-工程项目动态监管*/
+
+.home-admin,
+.project-admin {
+    height: 465px;
+}
+
+.home-admin .panel-content {
+    position: relative;
+}
+
+.home-admin .admin-year {
+    padding-left: 10px;
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.home-admin .item-box {
+    display: inline-block;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+
+.home-admin .item-box .admin-item:last-child {
+    display: block;
+    margin-top: 20px;
+}
+
+.home-admin #chartBox {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 600px;
+    height: 250px;
+}
+
+.home-admin .admin-item {
+    width: 250px;
+    display: inline-block;
+}
+
+.home-admin .admin-item .item-num {
+    font-size: 28px;
+    color: #53b4e2;
+    font-weight: bold;
+}
+
+.home-admin .admin-item .item-num .item-unit {
+    font-size: 20px;
+    font-weight: normal;
+    color: #fff;
+}
+
+.home-admin .admin-item .item-name {
+    font-size: 16px;
+    color: #fff;
+}
+
+.home-admin .admin-item .item-name .item-trend {
+    margin-left: 30px;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.home-admin .percent-list {
+    margin-top: 20px;
+    font-size: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-admin .circle-data {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.home-admin .circle-data .circle-num {
+    font-size: 24px;
+    font-weight: bold;
+    color: #53b4e2;
+}
+
+.home-admin .circle-data .circle-num .circle-unit {
+    font-size: 20px;
+    font-weight: normal;
+    color: #a9c6e8;
+}
+
+.home-admin .circle-data .circle-name {
+    font-size: 16px;
+    color: #a9c6e8;
+}
+
+.home-admin .data-list {
+    padding: 0 20px;
+}
+
+.home-admin .data-list .admin-item {
+    /* margin-top: 45px; */
+}
+
+.home-admin .num-color {
+    color: #f9e8ab !important;
+}
+
+.project-admin .panel-content {
+    padding: 20px 35px 20px 65px;
+}
+
+.project-admin .project-item {
+    display: flex;
+    margin-top: 35px;
+}
+
+.project-admin .project-item .project-stage {
+    position: relative;
+    flex: 1;
+    height: 70px;
+    padding: 5px 55px 0;
+    border: 1px solid #164774;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.project-admin .project-item .project-stage .border-top {
+    position: absolute;
+    top: -23px;
+    left: -34px;
+    width: 165px;
+    height: 65px;
+    background: url(../img/bg/border1.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.project-admin .project-item .project-stage .border-top span {
+    display: block;
+    width: 42px;
+    height: 43px;
+    margin-top: 9px;
+    margin-left: 9px;
+    background-color: #001837;
+    border-radius: 50%;
+    overflow: hidden;
+    font-size: 27px;
+    color: #fff;
+}
+
+.project-admin .project-item .project-stage .border-bottom {
+    position: absolute;
+    bottom: -2px;
+    right: -10px;
+    width: 140px;
+    height: 45px;
+    background: url(../img/bg/border2.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.project-admin .project-item .project-stage .stage-name {
+    font-size: 16px;
+    color: #fff;
+}
+
+.project-admin .project-item .project-stage .state-intro {
+    font-size: 14px;
+    color: #9cbde2;
+}
+
+.project-admin .project-item .project-num {
+    position: relative;
+    width: 310px;
+    height: 70px;
+    margin-left: 5px;
+    padding-left: 100px;
+    border: 1px solid #164774;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.project-admin .project-item .project-num .border-right {
+    position: absolute;
+    bottom: -2px;
+    right: -3px;
+    width: 80px;
+    height: 45px;
+    background: url(../img/bg/border3.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.project-admin .project-item .project-num .num-box {
+    font-size: 28px;
+    color: #c37ee3;
+    font-weight: bold;
+}
+
+.project-admin .project-item .project-num .num-box .num-unit {
+    font-size: 20px;
+    color: #95b6da;
+    font-weight: normal;
+}
+
+.project-admin .project-item .project-num .num-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+/*棚户区改造-危房改造*/
+
+.penghuqu-change,
+.dangerhouse-change {
+    height: 365px;
+    margin-top: 55px;
+}
+
+.penghuqu-change .panel-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.penghuqu-change .phq-item {
+    flex: 1;
+    padding: 10px;
+    background-color: #00385B;
+}
+
+.penghuqu-change .phq-item:last-child {
+    margin-left: 10px;
+}
+
+.penghuqu-change .phq-item .phq-title {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.penghuqu-change .phq-item .total-task {
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+.penghuqu-change .phq-item .total-task .task-num {
+    font-size: 28px;
+    font-weight: bold;
+    color: #53b4e2;
+}
+
+.penghuqu-change .phq-item .total-task .task-num span {
+    font-size: 20px;
+    font-weight: normal;
+    color: #a9c6e8;
+}
+
+.penghuqu-change .phq-item .total-task .task-intro {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.penghuqu-change .phq-item .progress-box {
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+.penghuqu-change .phq-item .progress-box .progres-info {
+    font-size: 20px;
+}
+
+.penghuqu-change .phq-item .progress-box .progres-info .info-num {
+    color: #fff;
+}
+
+.penghuqu-change .phq-item .progress-box .progres-info .info-num span {
+    color: #a9c6e8;
+}
+
+.penghuqu-change .phq-item .progress-box .progres-info .percent {
+    color: #a9c6e8;
+}
+
+.penghuqu-change .phq-item .progress-box .progress {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0;
+    background: -webkit-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: -moz-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: -o-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: linear-gradient(to right, #4ba4cf, #5cc899);
+}
+
+.penghuqu-change .phq-item .progress-box .progress-name {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.penghuqu-change .phq-item .amount {
+    padding-left: 20px;
+    margin-top: 25px;
+}
+
+.penghuqu-change .phq-item .amount .amount-intro {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.penghuqu-change .phq-item .amount .amount-num {
+    font-size: 28px;
+    font-weight: bold;
+    font-style: italic;
+    color: #f9e8ab;
+}
+
+.penghuqu-change .phq-item .amount .amount-num span {
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    color: #fff;
+}
+
+.dangerhouse-change .panel-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dangerhouse-change .item {
+    flex: 1;
+    padding: 10px;
+    height: 100%;
+    background-color: #00385B;
+}
+
+.dangerhouse-change .item:last-child {
+    margin-left: 10px;
+}
+
+.dangerhouse-change .item .item-content {
+    padding-left: 20px;
+}
+
+.dangerhouse-change .item .title {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.dangerhouse-change .item .item-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.dangerhouse-change .item .item-info .task-intro {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.dangerhouse-change .item .item-info .total-task {
+    margin-top: 20px;
+}
+
+.dangerhouse-change .item .item-info .total-task .task-num {
+    font-size: 28px;
+    font-weight: bold;
+    color: #53b4e2;
+}
+
+.dangerhouse-change .item .item-info .total-task .task-num span {
+    font-size: 20px;
+    font-weight: normal;
+    color: #a9c6e8;
+}
+
+.dangerhouse-change .item .item-info .total-change {
+    flex: 1;
+    margin-top: 20px;
+    margin-left: 35px;
+}
+
+.dangerhouse-change .item .item-info .total-change .zgzs-info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #a9c6e8;
+}
+
+.dangerhouse-change .item .item-info .total-change .zgzs-info span {
+    color: #53b4e2;
+}
+
+.dangerhouse-change .item .item-info .total-change .line-length {
+    position: relative;
+    line-height: 37px;
+}
+
+.dangerhouse-change .item .item-info .total-change .line-length::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    display: inline-block;
+    width: 100%;
+    height: 4px;
+    background: -webkit-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: -moz-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: -o-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: linear-gradient(to right, #4ba4cf, #5cc899);
+}
+
+.dangerhouse-change .item .total-touzi {
+    color: #a9c6e8;
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+.dangerhouse-change .item .total-touzi span {
+    font-size: 28px;
+    color: #f9e8ab;
+    font-style: italic;
+    padding-right: 10px;
+    font-weight: 700;
+}
+
+.dangerhouse-change .item .circle-data {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.dangerhouse-change .item .circle-data .circle-num {
+    font-size: 18px;
+    font-weight: bold;
+    color: #53b4e2;
+}
+
+.dangerhouse-change .item .circle-data .circle-num .circle-unit {
+    font-weight: normal;
+    color: #a9c6e8;
+}
+
+.dangerhouse-change .item .circle-data .circle-name {
+    font-size: 14px;
+    color: #a9c6e8;
+}
+
+.dangerhouse-change .item .yellow-circle .circle-num {
+    color: #f9e8ab;
+}
+
+
+/*地下管线普查-公积金监管*/
+
+.pipeline-check,
+.gongjijin-admin {
+    height: 365px;
+    margin-top: 55px;
+}
+
+.pipeline-box {
+    background: #00385B;
+    height: 100%;
+}
+
+.pipeline-box .check-year {
+    padding-left: 5px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.pipeline-box .total-length {
+    padding: 25px 0 0 15px;
+    position: relative;
+}
+
+.pipeline-box .total-length .total .total-num {
+    font-size: 28px;
+    color: #53b4e2;
+}
+
+.pipeline-box .total-length .total .total-num span {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.pipeline-box .total-length .total .total-text {
+    margin-top: 5px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.pipeline-box .total-length .line-length {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.pipeline-box .line-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 15px;
+}
+
+.pipeline-box .line-length {
+    display: inline-block;
+    width: 235px;
+    margin-top: 40px;
+    border-bottom: 4px solid;
+    border-image: -webkit-linear-gradient(to right, #4ba4cf, #5cc899) 1 1;
+    border-image: -moz-linear-gradient(to right, #4ba4cf, #5cc899) 1 1;
+    border-image: -o-linear-gradient(to right, #4ba4cf, #5cc899) 1 1;
+    border-image: linear-gradient(to right, #4ba4cf, #5cc899) 1 1;
+}
+
+.pipeline-box .line-length .line-name {
+    font-size: 16px;
+    color: #a9c6e8;
+    vertical-align: bottom;
+}
+
+.pipeline-box .line-length .line-num {
+    font-size: 18px;
+    color: #53b4e2;
+}
+
+.pipeline-box .line-length .line-num .line-unit {
+    font-size: 16px;
+    color: #a9c6e8;
+}
+
+.gongjijin-admin .panel-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gongjijin-admin .gjj-box {
+    flex: 1;
+    position: relative;
+    background-color: #00385B;
+    padding: 10px;
+}
+
+.gongjijin-admin .gjj-box .gjj-title {
+    font-size: 20px;
+    color: #fff;
+}
+
+.gongjijin-admin .gjj-box .chart-box {
+    width: 100%;
+    height: 270px;
+}
+
+.gongjijin-admin .gjj-box .fk-num {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    border: 1px solid #3f8eb9;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #a9c6e8;
+    margin-top: 20px;
+}
+
+.gongjijin-admin .gjj-box .fk-num dt,
+.gongjijin-admin .gjj-box .fk-num dd {
+    display: inline-block;
+}
+
+.gongjijin-admin .toyear {
+    margin-left: 10px;
+}
+
+
+/*黑臭水体整治-物业管理*/
+
+.water-admin,
+.wuye-admin {
+    height: 680px;
+    margin-top: 55px;
+}
+
+.water-admin .title {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.water-admin .top-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.water-admin .top-box .box-item {
+    flex: 1;
+    padding: 10px;
+    background-color: #00385B;
+}
+
+.water-admin .top-box .box-item:first-child {
+    margin-right: 10px;
+}
+
+.water-admin .top-box .box-item .task {
+    display: inline-block;
+    width: 180px;
+    margin-top: 30px;
+    margin-right: 20px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.water-admin .top-box .box-item .task .task-item {
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+}
+
+.water-admin .top-box .box-item .task .task-item:last-child {
+    margin-left: 20px;
+}
+
+.water-admin .top-box .box-item .task .task-item .num {
+    color: #E57BF2;
+}
+
+.water-admin .top-box .box-item .task .task-item .num span {
+    color: #B3CFF3;
+}
+
+.water-admin .top-box .box-item .task .task-item .name {
+    color: #a9c6e8;
+}
+
+.water-admin .top-box .box-item .invest {
+    width: 200px;
+    display: inline-block;
+    color: #fff;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+.water-admin .top-box .box-item .invest .plan-num {
+    font-size: 28px;
+    color: #f9e8ab;
+    margin-top: 20px;
+}
+
+.water-admin .top-box .box-item .invest .plan-num span {
+    font-size: 16px;
+    color: #fff;
+}
+
+.water-admin .top-box .box-item .invest .name {
+    font-size: 16px;
+}
+
+.water-admin .top-box .box-item .invest .progress-box {
+    margin-top: 20px;
+}
+
+.water-admin .top-box .box-item .invest .progress-box .project-num {
+    height: 25px;
+    line-height: 25px;
+    font-size: 20px;
+    color: #f9e8ab;
+}
+
+.water-admin .top-box .box-item .invest .progress-box .project-num span {
+    font-size: 16px;
+    color: #fff;
+}
+
+.water-admin .top-box .box-item .invest .progress-box .progress {
+    width: 100%;
+    height: 20px;
+    margin: 5px 0;
+    background: -webkit-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: -moz-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: -o-linear-gradient(to right, #4ba4cf, #5cc899);
+    background: linear-gradient(to right, #4ba4cf, #5cc899);
+}
+
+.water-admin .top-box .box-item .area {
+    height: 40px;
+    line-height: 40px;
+    margin-top: 15px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.water-admin .top-box .box-item .area .num {
+    font-size: 28px;
+    color: #53b4e2;
+}
+
+.water-admin .top-box .box-item .area .num span {
+    font-size: 16px;
+    color: #fff;
+}
+
+.water-admin .bottom-box {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #00385B;
+}
+
+.water-admin .bottom-box .govern-state {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .item-title {
+    font-size: 20px;
+    color: #53b4e2;
+    text-align: center;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box {
+    margin-top: 20px;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .total-num {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    padding: 20px 0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px #334EAE;
+    background-color: #001C45;
+    color: #a9c6e8;
+    font-size: 18px;
+    text-align: center;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .total-num .num {
+    font-size: 28px;
+    color: #E57BF2;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .total-num .num span {
+    color: #a9c6e8;
+    font-size: 18px;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .state-list {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .state-list .state-item {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #a9c6e8;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .state-list .state-item .item-num {
+    display: inline-block;
+    width: 50px;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .state-list .state-item .item-num span {
+    color: #fff;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .state-list .state-item .percent-box {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .state-list .state-item .percent-box img {
+    display: block;
+    width: 30px;
+    height: 20px;
+    margin: auto;
+}
+
+.water-admin .bottom-box .govern-state .govern-item .state-box .state-list .state-item .percent-box .percent-num span {
+    color: #fff;
+}
+
+.wuye-admin .title {
+    font-size: 20px;
+    color: #a9c6e8;
+}
+
+.wuye-admin .top-box {
+    padding: 10px;
+    background-color: #00385B;
+}
+
+.wuye-admin .top-box #weixiuChart {
+    width: 100%;
+    height: 253px;
+}
+
+.wuye-admin .bottom-box {
+    margin-top: 10px;
+}
+
+.wuye-admin .bottom-box .area-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.wuye-admin .bottom-box .area-list .area-item {
+    margin-top: 10px;
+    background-color: #00385B;
+    padding: 13px;
+    border-radius: 5px;
+    width: 290px;
+}
+
+.wuye-admin .bottom-box .area-list .area-item img {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+}
+
+.wuye-admin .bottom-box .area-list .area-item .item-num {
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.wuye-admin .bottom-box .area-list .area-item .item-num .unit {
+    color: #E57BF2;
+}
+
+
+/*房地产监管页面*/
+
+#marketState .main-content {
+    padding: 30px 30px 20px;
+}
+
+#marketState .main-content .standard-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+#marketState .main-content .standard-list li {
+    width: 300px;
+    padding: 10px 15px;
+}
+
+#marketState .main-content .standard-list .standard-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6BF885;
+    text-align: center;
+    width: 180px;
+}
+
+#marketState .main-content .standard-list .standard-item {
+    border: 1px solid #164774;
+    border-radius: 5px;
+}
+
+#marketState .main-content .standard-list .standard-item .item {
+    display: inline-block;
+    text-align: center;
+}
+
+#marketState .main-content .standard-list .standard-item .item .num-name {
+    font-size: 16px;
+    color: #fff;
+}
+
+#marketState .main-content .standard-list .standard-item .item .num-val {
+    font-size: 16px;
+    color: #91C861;
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+#marketState .main-content .standard-list .standard-item .item .my-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+#marketState .main-content .standard-list .standard-item .item .my-icon-up {
+    background: url(../img/icon/up.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+#marketState .main-content .standard-list .standard-item .item .my-icon-down {
+    background: url(../img/icon/down.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+#marketState .main-content .standard-list .standard-item .item .my-icon-ping {
+    background: url(../img/icon/ping.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+#marketState .main-content .chart-box {
+    display: flex;
+    margin-top: 20px;
+}
+
+#marketState .main-content .chart-box .left-content,
+#marketState .main-content .chart-box .right-content {
+    width: 500px;
+}
+
+#marketState .main-content .chart-box .left-content .chart-item:last-child,
+#marketState .main-content .chart-box .right-content .chart-item:last-child {
+    border-bottom: 0;
+}
+
+#marketState .main-content .chart-box .chart-item {
+    padding: 15px 10px;
+    border-bottom: 1px solid #58698B;
+    margin-top: 10px;
+}
+
+#marketState .main-content .chart-box .chart-item .chart-intro .title .title-name {
+    display: inline-block;
+    color: #6BF885;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#marketState .main-content .chart-box .chart-item .chart-intro .title .tips {
+    padding: 0 10px;
+    border: 3px solid #6BF885;
+    color: #6BF885;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#marketState .main-content .chart-box .chart-item .chart-intro .state-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#marketState .main-content .chart-box .chart-item .chart-intro .state-info li {
+    padding: 5px 10px;
+    border: 1px solid #164774;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #29334E;
+    text-align: center;
+}
+
+#marketState .main-content .chart-box .chart-item .chart-intro .state-info .num {
+    color: #91C861;
+}
+
+#marketState .main-content .chart-box .chart-item .chart {
+    width: 100%;
+    height: 260px;
+    margin-top: 10px;
+}
+
+#marketState .main-content .chart-box .map-content {
+    flex: 1;
+    width: 1000px;
+    height: 790px;
+    margin: 0 15px;
+    padding: 30px 35px 30px;
+    background: url(../img/bg/line-1.png) no-repeat top right, url(../img/bg/line-4.png) no-repeat bottom right, url(../img/bg/line-3.png) no-repeat bottom left, url(../img/bg/line-2.png) no-repeat top left;
+}
+
+#marketState .main-content .chart-box .map-content .map-head {
+    margin-top: 20px;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .state-list li {
+    display: inline-block;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .state-list .state-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #F6D922;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .state-list .state-item {
+    padding: 3px 5px;
+    border: 1px solid #164774;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #D6D19D;
+    font-size: 14px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .state-list .active {
+    color: #F6D922 !important;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .zhibiao-list {
+    margin-top: 15px;
+    padding: 0 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid #58698B;
+    text-align: center;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .zhibiao-list li {
+    display: inline-block;
+    margin-left: 30px;
+    padding: 10px 0;
+    color: #D6D19D;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .zhibiao-list .active {
+    position: relative;
+    color: #F6D922;
+    border-bottom: 2px solid #F6D922;
+}
+
+#marketState .main-content .chart-box .map-content .map-head .zhibiao-list .active:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #F6D922;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#marketState .main-content .chart-box .map-content #gdMap {
+    width: 100%;
+    height: 610px;
+    margin-top: 10px;
+}
+
+
+/*黑臭水体整治页面*/
+
+#waterAdmin #main {
+    height: 1080px;
+}
+
+#waterAdmin .main-contain {
+    position: relative;
+    height: 1020px;
+}
+
+#waterAdmin .main-contain #mapContent {
+    width: 100%;
+    height: 100%;
+}
+
+#waterAdmin .main-contain .left-content {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    width: 500px;
+    z-index: 999;
+}
+
+#waterAdmin .main-contain .left-content .title {
+    height: 40px;
+    width: 500px;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #fff;
+    background: -webkit-linear-gradient(to right, #006DC0, #0056A6);
+    background: -moz-linear-gradient(to right, #006DC0, #0056A6);
+    background: -o-linear-gradient(to right, #006DC0, #0056A6);
+    background: linear-gradient(to right, #006DC0, #0056A6);
+}
+
+#waterAdmin .main-contain .left-content .title .back {
+    width: 30px;
+    height: 20px;
+    margin-top: 10px;
+    background: url(../img/icon/back.png) no-repeat center;
+}
+
+#waterAdmin .content {
+    margin-top: 10px;
+    height: calc(100% - 50px);
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+#waterAdmin .content .data-list {
+    padding: 10px;
+    font-size: 0;
+}
+
+#waterAdmin .content .data-list .data-item {
+    display: inline-block;
+    width: 50%;
+    padding: 10px 0;
+    border-bottom: 1px dashed #999;
+}
+
+#waterAdmin .content .data-list .data-item:nth-child(2n) .item-box {
+    border-right: 0;
+}
+
+#waterAdmin .content .data-list .data-item:nth-child(3),
+#waterAdmin .content .data-list .data-item:last-child {
+    border-bottom: 0;
+}
+
+#waterAdmin .content .data-list .data-item .item-box {
+    padding-left: 20px;
+    border-right: 1px dashed #999;
+}
+
+#waterAdmin .content .data-list .data-item .item-name {
+    font-size: 18px;
+    color: #333;
+}
+
+#waterAdmin .content .data-list .data-item .item-num {
+    font-size: 28px;
+    color: #E16E2A;
+}
+
+#waterAdmin .content .num-list {
+    padding: 20px;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    display: flex;
+    justify-content: space-between;
+}
+
+#waterAdmin .content .num-list li {
+    flex: 1;
+    height: 30px;
+    width: 22%;
+    margin-left: 10px;
+    line-height: 30px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+#waterAdmin .content .num-list li:first-child {
+    margin-left: 0;
+    background-color: #B5B3C0;
+}
+
+#waterAdmin .content .num-list li:nth-child(2) {
+    background-color: #00A97F;
+}
+
+#waterAdmin .content .num-list li:nth-child(3) {
+    background-color: #FF901F;
+}
+
+#waterAdmin .content .num-list li:last-child {
+    background-color: #FF4500;
+}
+
+#waterAdmin .content .table-box {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#waterAdmin .content .table-box thead {
+    background: #DFEDFB;
+}
+
+#waterAdmin .content .table-box thead th {
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+#waterAdmin .content .table-box tbody .bg {
+    background-color: #F9F9FB;
+}
+
+#waterAdmin .content .table-box tbody tr td:first-child {
+    color: #0097F0;
+}
+
+#waterAdmin .content .table-box tbody td {
+    font-size: 18px;
+    padding: 6px 0;
+}
+
+
+/*物业监管页面*/
+
+#wuyeAdmin .wuye-content {
+    padding: 30px;
+}
+
+#wuyeAdmin .wuye-content .title {
+    text-align: center;
+    color: #a9c6e8;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#wuyeAdmin .wuye-area {
+    background-color: #00385B;
+    padding: 20px;
+    font-size: 0;
+}
+
+#wuyeAdmin .wuye-area .area-title {
+    font-size: 24px;
+    color: #a9c6e8;
+}
+
+#wuyeAdmin .wuye-area .area-title span {
+    color: #53b4e2;
+}
+
+#wuyeAdmin .wuye-area .area-box {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    text-align: center;
+}
+
+#wuyeAdmin .wuye-area .area-box .area-list .area-item {
+    display: inline-block;
+    width: 350px;
+    padding: 30px 40px;
+    border: 1px solid #01CBE6;
+    margin-top: 30px;
+    margin-right: 30px;
+    text-align: left;
+}
+
+#wuyeAdmin .wuye-area .area-box .area-list .area-item img {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
+}
+
+#wuyeAdmin .wuye-area .area-box .area-list .area-item .num-box {
+    display: inline-block;
+    margin-left: 10px;
+    color: #fff;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+#wuyeAdmin .wuye-area .area-box .area-list .area-item .num-box span {
+    color: #53b4e2;
+}
+
+#wuyeAdmin .wuye-area #areaChart {
+    display: inline-block;
+    width: 50%;
+    height: 305px;
+}
+
+#wuyeAdmin .main-part {
+    margin-top: 50px;
+}
+
+#wuyeAdmin .main-part .panel-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#wuyeAdmin .main-part .item {
+    height: 400px;
+    padding: 20px;
+}
+
+#wuyeAdmin .main-part .congyezhuti {
+    width: 600px;
+    position: relative;
+}
+
+#wuyeAdmin .main-part .congyezhuti .total-num {
+    position: absolute;
+    top: 55%;
+    left: 38%;
+    text-align: center;
+    font-size: 20px;
+    color: #53b4e2;
+}
+
+#wuyeAdmin .main-part .congyezhuti #companyComprise {
+    width: 100%;
+    height: 100%;
+}
+
+#wuyeAdmin .main-part .congyerenyuan {
+    width: 400px;
+    text-align: center;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .people-num {
+    margin-top: 30px;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .people-num img {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .people-num .num {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    border: 5px solid #F09404;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 90px;
+    color: #a9c6e8;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .people-ratio {
+    position: relative;
+    display: inline-block;
+    margin-top: 30px;
+    height: 80px;
+    background-repeat: repeat-x;
+    background-size: 30px 50px;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .people-ratio .border {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    height: 10px;
+    border-left: 1px dashed #53b4e2;
+    border-right: 1px dashed #53b4e2;
+    border-bottom: 1px dashed #53b4e2;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .people-ratio .ratio-num {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 60px;
+    text-align: center;
+    background-color: #07233d;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .man {
+    width: 180px;
+    background-image: url(../img/icon/man.png);
+}
+
+#wuyeAdmin .main-part .congyerenyuan .man .border {
+    width: 150px;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .man .ratio-num {
+    color: #71B489;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .woman {
+    width: 120px;
+    background-image: url(../img/icon/woman.png);
+}
+
+#wuyeAdmin .main-part .congyerenyuan .woman .border {
+    width: 90px;
+}
+
+#wuyeAdmin .main-part .congyerenyuan .woman .ratio-num {
+    color: #928DB6;
+}
+
+#wuyeAdmin .main-part .age-list {
+    position: relative;
+    width: 410px;
+    margin-top: 20px;
+}
+
+#wuyeAdmin .main-part .age-list:after {
+    display: table;
+    content: "";
+    position: absolute;
+    left: 200px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    height: 400px;
+    border-left: 1px dashed #53b4e2;
+}
+
+#wuyeAdmin .main-part .age-list .age-item {
+    position: relative;
+    height: 60px;
+}
+
+#wuyeAdmin .main-part .age-list .age-item .circle {
+    position: absolute;
+    top: 20px;
+    left: 188px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #fff;
+    background-color: #42488D;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+#wuyeAdmin .main-part .age-list .age-item .age {
+    position: absolute;
+    top: 10px;
+    padding: 0 15px;
+    border-bottom: 1px dashed #53b4e2;
+    color: #53b4e2;
+}
+
+#wuyeAdmin .main-part .age-list .age-item .ratio {
+    position: absolute;
+    top: -10px;
+    text-align: center;
+}
+
+#wuyeAdmin .main-part .age-list .age-item .ratio img {
+    width: 40px;
+    height: 50px;
+}
+
+#wuyeAdmin .main-part .age-list .age-item .ratio .ratio-val {
+    font-size: 14px;
+    color: #53b4e2;
+}
+
+#wuyeAdmin .main-part .age-list .rigth .age {
+    left: 215px;
+}
+
+#wuyeAdmin .main-part .age-list .rigth .ratio {
+    right: 80px;
+}
+
+#wuyeAdmin .main-part .age-list .left .age {
+    left: 125px;
+}
+
+#wuyeAdmin .main-part .age-list .left .ratio {
+    left: 80px;
+}
+
+#wuyeAdmin .main-part #xueli {
+    width: 500px;
+}
+
+#wuyeAdmin .carport {
+    padding: 20px;
+    height: 400px;
+    margin-top: 50px;
+    background-color: #00385B;
+    font-size: 0;
+}
+
+#wuyeAdmin .carport #carportChart {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+
+#wuyeAdmin .carport .zhanbi-status {
+    display: inline-block;
+    width: 50%;
+    color: #fff;
+    vertical-align: top;
+    text-align: center;
+}
+
+#wuyeAdmin .carport .zhanbi-status .title {
+    margin-bottom: 20px;
+}
+
+#wuyeAdmin .carport .zhanbi-status .left-status {
+    display: inline-block;
+    width: 400px;
+    height: 320px;
+    font-size: 24px;
+}
+
+#wuyeAdmin .carport .zhanbi-status .left-status .item {
+    height: 160px;
+    line-height: 2;
+    padding: 30px 0;
+}
+
+#wuyeAdmin .carport .zhanbi-status .left-status .item:first-child {
+    background-color: #B9A637;
+}
+
+#wuyeAdmin .carport .zhanbi-status .left-status .item:last-child {
+    background-color: #8378EA;
+}
+
+#wuyeAdmin .carport .zhanbi-status .right-status {
+    display: inline-block;
+    width: 220px;
+    height: 320px;
+    vertical-align: top;
+    font-size: 24px;
+    background-color: #7AAF50;
+    padding-top: 120px;
+}
+
+#wuyeAdmin .elevator-status {
+    height: 400px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #00385B;
+    font-size: 0;
+}
+
+#wuyeAdmin .elevator-status .install-status {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+
+#wuyeAdmin .elevator-status .install-status .status-list {
+    margin-top: 50px;
+}
+
+#wuyeAdmin .elevator-status .install-status .status-list li {
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    margin-left: 20px;
+    padding: 25px 0;
+    border-radius: 50% / 50%;
+    background-color: #fff;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+
+#wuyeAdmin .elevator-status .install-status .status-list li:first-child {
+    background: -webkit-linear-gradient(to right, #5BBCFF, #1691FE);
+    background: -moz-linear-gradient(to right, #5BBCFF, #1691FE);
+    background: -o-linear-gradient(to right, #5BBCFF, #1691FE);
+    background: linear-gradient(to right, #5BBCFF, #1691FE);
+}
+
+#wuyeAdmin .elevator-status .install-status .status-list li:nth-child(2) {
+    background: -webkit-linear-gradient(to right, #65DCE4, #4FAFF7);
+    background: -moz-linear-gradient(to right, #65DCE4, #4FAFF7);
+    background: -o-linear-gradient(to right, #65DCE4, #4FAFF7);
+    background: linear-gradient(to right, #65DCE4, #4FAFF7);
+}
+
+#wuyeAdmin .elevator-status .install-status .status-list li:last-child {
+    background: -webkit-linear-gradient(to right, #FFD85C, #FFBD4C);
+    background: -moz-linear-gradient(to right, #FFD85C, #FFBD4C);
+    background: -o-linear-gradient(to right, #FFD85C, #FFBD4C);
+    background: linear-gradient(to right, #FFD85C, #FFBD4C);
+}
+
+#wuyeAdmin .elevator-status #buildYear {
+    display: inline-block;
+    width: 50%;
+    height: 360px;
+    vertical-align: top;
+}
+
+#wuyeAdmin .kongzhi-status {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #00385B;
+}
+
+#wuyeAdmin .kongzhi-status .kongzhi-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+#wuyeAdmin .kongzhi-status .kongzhi-list .kongzhi-item {
+    text-align: center;
+}
+
+#wuyeAdmin .kongzhi-status .kongzhi-list .kongzhi-item .kongzhi-num {
+    width: 160px;
+    height: 160px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    color: #53b4e2;
+    font-size: 18px;
+}
+
+#wuyeAdmin .kongzhi-status .kongzhi-list .kongzhi-item .kongzhi-name {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #a9c6e8;
+}
+
+
+/*项目房源style*/
+
+#houseSource .page-content {
+    padding: 45px 40px 35px;
+}
+
+#houseSource .page-content .left-content {
+    width: 600px;
+}
+
+#houseSource .page-content .left-content .top-chart {
+    height: 400px;
+}
+
+#houseSource .page-content .left-content .bottom-chart {
+    height: 460px;
+    margin-top: 80px;
+}
+
+#houseSource .page-content .right-content {
+    width: calc(100% - 640px);
+    height: 940px;
+    margin-left: 40px;
+    border: 1px solid #164774;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 5px #184772;
+}
+
+#houseSource .page-content .right-content #BMap {
+    width: 100%;
+    height: 100%;
+}
+
+#houseSource .infoBoxContent {
+    width: 550px;
+    border: 1px solid #164774;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+}
+
+#houseSource .infoBoxContent .w150 {
+    width: 150px;
+}
+
+#houseSource .infoBoxContent .communityName {
+    padding: 0 5px;
+    font-size: 16px;
+}
+
+#houseSource .infoBoxContent .communityName span {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#houseSource .infoBoxContent .title {
+    margin-top: 20px;
+    font-size: 16px;
+    border-bottom: 2px solid #1c3c66;
+    padding: 10px 5px;
+}
+
+#houseSource .infoBoxContent .dataInfo {
+    padding: 0 5px;
+}
+
+#houseSource .infoBoxContent .dataInfo td {
+    padding: 20px 0 0;
+    font-size: 16px;
+    vertical-align: top;
+}
+
+#houseSource .infoBoxContent .seeMore {
+    float: right;
+    margin-top: 20px;
+    padding-right: 5px;
+    text-align: right;
+    color: #a3aec5;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/*********************科室管理弹出框************************/
+
+.kspart {}
+
+.ksbt {
+    color: #555;
+    padding: 15px;
+}
+
+.ksbt .tit {
+    color: #333;
+    margin-right: 20px;
+    font-size: 16px;
+    background-color: #36f0ef;
+    border: 1px solid #36f0ef;
+    padding: 8px 12px;
+}
+
+.ksGroup {
+    padding: 0 15px;
+}
+
+.ksGroup li {
+    float: left;
+    padding: 8px 12px;
+    margin-right: 15px;
+    background-color: #eeeeee;
+    margin-bottom: 10px;
+}

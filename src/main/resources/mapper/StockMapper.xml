@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.stock.mapper.StockMapper">
+    <insert id="saveData" parameterType="com.stock.po.Stock">
+        INSERT INTO  stock_data_count (stock_name,stock_code,trade_time,end_price,start_price,create_time)VALUES(#{stockName},#{stockCode},#{tradeTime},#{endPrice},#{startPrice},#{create_time})
+    </insert>
+
+    <select id="findStockList" resultType="string">
+        SELECT stock_name AS stockName FROM stock_name
+    </select>
+
+    <insert id="savaDataBatch">
+        INSERT INTO stock_data_count (stock_name,stock_code,trade_time,end_price,start_price,create_time)VALUES
+        <foreach collection="list" index="item" item="t" separator=",">
+            (#{t.stockName},#{t.stockCode},#{t.tradeTime},#{t.endPrice},#{t.startPrice},#{t.create_time})
+        </foreach>
+    </insert>
+
+    <select id="findStockEndPriceList" parameterType="string" resultType="com.stock.po.Stock">
+        SELECT
+            id,
+            end_price as endPrice,
+            start_price AS startPrice,
+            trade_time AS tradeTime,
+            stock_name AS stockName
+        FROM
+            `stock_data_count`
+        WHERE 1=1
+            <if test="stockName != null and stockName != ''">
+              and stock_name = #{stockName}
+            </if>
+        ORDER BY
+            stock_code,
+            trade_time,
+            id
+    </select>
+
+    <select id="findMaxTrandeDate" parameterType="string" resultType="string">
+        SELECT MAX(trade_time) AS tradeDate FROM `stock_data_count` WHERE stock_name = #{name}
+    </select>
+</mapper>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .main000 {
+            height: 360px;
+            width: 778px !important;
+        }
+    </style>
+</head>
+<body>
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script type='text/javascript'>
+
+
+
+
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+    option = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+        },
+            {
+                data: [20, 32, 10, 34, 20, 30, 20],
+                type: 'line',
+                smooth: true
+            }]
+    };
+    require(
+        [
+            'echarts',
+            'echarts/chart/line',//需要折线图则加载line模块
+            'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+        ],
+        function (ec) {
+            myChart = ec.init(document.getElementById('line_normal'));
+            myChart.setOption(option);
+        });
+</script>
+<div id="line_normal" class="main000"></div>
+</body>
+</html>
+
