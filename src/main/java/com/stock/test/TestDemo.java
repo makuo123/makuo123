@@ -115,4 +115,9 @@ public class TestDemo {
         int b = 3 & 15;
         System.out.println(a == b);
     }
+
+    @Test
+    public void test2(){
+        System.out.println("合并");
+    }
 }
