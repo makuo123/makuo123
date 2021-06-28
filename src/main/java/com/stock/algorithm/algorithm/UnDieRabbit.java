@@ -7,7 +7,7 @@ package com.stock.algorithm.algorithm;
  * @Date 2021/5/28 10:17
  * @Version 1.0
  */
-public class Rabbit {
+public class UnDieRabbit {
 
     public static void main(String[] args) {
         //getCount();
