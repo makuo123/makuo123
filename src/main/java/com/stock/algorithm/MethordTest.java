@@ -1,4 +1,4 @@
-package com.stock.test;
+package com.stock.algorithm;
 
 /**
  * @Author mk

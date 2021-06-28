@@ -1,4 +1,4 @@
-package com.stock.test.spi;
+package com.stock.algorithm.spi;
 
 /**
  * @Author mk
