@@ -1,4 +1,4 @@
-package com.stock.test.algorithm;
+package com.stock.algorithm.algorithm;
 
 /**
  * 不死兔问题

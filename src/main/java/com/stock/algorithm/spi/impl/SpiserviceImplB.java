@@ -1,6 +1,6 @@
-package com.stock.test.spi.impl;
+package com.stock.algorithm.spi.impl;
 
-import com.stock.test.spi.SpiService;
+import com.stock.algorithm.spi.SpiService;
 
 /**
  * @Author mk

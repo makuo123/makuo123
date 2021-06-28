@@ -1,4 +1,4 @@
-package com.stock.test;
+package com.stock.algorithm;
 
 import com.stock.entity.TestValue;
 import org.junit.Test;

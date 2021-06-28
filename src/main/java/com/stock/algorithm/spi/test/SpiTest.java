@@ -1,6 +1,6 @@
-package com.stock.test.spi.test;
+package com.stock.algorithm.spi.test;
 
-import com.stock.test.spi.SpiService;
+import com.stock.algorithm.spi.SpiService;
 import org.junit.Test;
 
 import java.util.Iterator;
