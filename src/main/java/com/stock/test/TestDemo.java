@@ -118,6 +118,6 @@ public class TestDemo {
 
     @Test
     public void test2(){
-        System.out.println("合并");
+        System.out.println("master合并");
     }
 }
