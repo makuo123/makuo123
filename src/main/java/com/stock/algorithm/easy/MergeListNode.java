@@ -1,5 +1,6 @@
 package com.stock.algorithm.easy;
 
+import com.stock.algorithm.ListNode;
 import org.junit.Test;
 
 
@@ -124,28 +125,3 @@ public class MergeListNode {
 
 }
 
-class ListNode {
-    public int num;
-
-    public ListNode next;
-
-    public ListNode() {
-    }
-
-    public ListNode(int num) {
-        this.num = num;
-    }
-
-    public ListNode(int num, ListNode next) {
-        this.num = num;
-        this.next = next;
-    }
-
-    @Override
-    public String toString() {
-        return "ListNode{" +
-                "num=" + num +
-                ", next=" + next +
-                '}';
-    }
-}

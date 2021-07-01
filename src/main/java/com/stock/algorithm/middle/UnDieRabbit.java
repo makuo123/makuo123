@@ -1,4 +1,4 @@
-package com.stock.algorithm.algorithm;
+package com.stock.algorithm.middle;
 
 /**
  * 不死兔问题
