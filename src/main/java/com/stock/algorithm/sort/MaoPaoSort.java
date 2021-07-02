@@ -1,19 +1,16 @@
 package com.stock.algorithm.sort;
 
-import org.aspectj.weaver.ast.Var;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
- * java常见排序算法
+ * java常见排序算法:
+ * 冒泡算法
  *
  * @Author mk
  * @Date 2021/7/2 9:45
  * @Version 1.0
  */
-public class SortList<T> {
+public class MaoPaoSort<T> {
 
     /**
      * 冒泡算法思路：
