@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.util.CollectionUtils;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -106,5 +107,13 @@ public class MyHashMap<K,V> {
         myHashMap.remove(1);
         myHashMap.put(2, "c");
         System.out.println(1);
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put(1, 1);
+        if (map == null){
+            //region Description
+            System.out.println(1);
+            //endregion
+        }
+
     }
 }
