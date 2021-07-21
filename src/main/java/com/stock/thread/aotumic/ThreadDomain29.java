@@ -1,7 +1,5 @@
 package com.stock.thread.aotumic;
 
-import com.stock.thread.threadlocal.Tools;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ThreadDomain29 {
