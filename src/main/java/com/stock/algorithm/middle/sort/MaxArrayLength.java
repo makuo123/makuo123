@@ -56,9 +56,12 @@ public class MaxArrayLength {
 
     @Test
     public void test() {
-        int[] arr = {1, 2, 2, 5, 4, 100, 100, 100, 101};
+        /*int[] arr = {1, 2, 2, 5, 4, 100, 100, 100, 101};
         //int[] arr = {2,2,1,2,1};
         int max = maxArrayLength(arr);
-        System.out.println(max);
+        System.out.println(max);*/
+        String s = "abc";
+        String substring = s.substring(0, 10);
+        System.out.println("substring = " + substring);
     }
 }
