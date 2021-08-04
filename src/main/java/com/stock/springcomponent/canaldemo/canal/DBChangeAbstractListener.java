@@ -1,4 +1,4 @@
-package com.stock.util.canaldemo.canal;
+package com.stock.springcomponent.canaldemo.canal;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

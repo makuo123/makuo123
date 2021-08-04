@@ -1,4 +1,4 @@
-package com.stock.util.canaldemo.dbchange;
+package com.stock.springcomponent.canaldemo.dbchange;
 
 import org.springframework.context.ApplicationEvent;
 

@@ -4,6 +4,7 @@ import com.stock.entity.TestValue;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
  * @Date 2020/10/27 15:14
  * @Version 1.0
  */
-public class TestDemo {
+public class HashMapDemo {
 
     private static  int A_VALUE;
     public static void main(String[] args) {
@@ -65,6 +66,7 @@ public class TestDemo {
         c |= c>>>8;
         c |= c>>>16;
 
+        new HashMap<>();
         System.out.println(c+1);
 
         TestValue value = new TestValue();

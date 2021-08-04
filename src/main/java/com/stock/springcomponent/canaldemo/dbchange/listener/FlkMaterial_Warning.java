@@ -1,8 +1,8 @@
-package com.stock.util.canaldemo.dbchange.listener;
+package com.stock.springcomponent.canaldemo.dbchange.listener;
 
 import com.alibaba.fastjson.JSONObject;
-import com.stock.util.canaldemo.canal.DBChangeBaseListenerSync;
-import com.stock.util.canaldemo.dbchange.FlkMaterialEvent;
+import com.stock.springcomponent.canaldemo.canal.DBChangeBaseListenerSync;
+import com.stock.springcomponent.canaldemo.dbchange.FlkMaterialEvent;
 import org.springframework.stereotype.Component;
 
 

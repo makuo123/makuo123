@@ -1,4 +1,4 @@
-package com.stock.util.canaldemo.config;
+package com.stock.springcomponent.canaldemo.config;
 
 import org.springframework.boot.autoconfigure.kafka.ConcurrentKafkaListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
