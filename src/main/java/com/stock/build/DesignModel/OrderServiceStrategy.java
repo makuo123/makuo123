@@ -10,9 +10,10 @@ import java.util.Map;
 /**
  * @Author mk
  *   com.stock.service.noif.impl.M01OrderServiceImpl
- *  设计模式中的策略模式
+ *============================
+ *  策略模式
  *  解决if-else过多的问题
- *
+ *============================
  * @Date 2021/5/27 15:20
  * @Version 1.0
  */

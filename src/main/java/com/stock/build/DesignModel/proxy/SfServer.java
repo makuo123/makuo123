@@ -4,6 +4,12 @@ package com.stock.build.DesignModel.proxy;
 import org.apache.commons.codec.binary.StringUtils;
 
 /**
+ * ==========================
+ *         目标对象角色
+ * ==========================
+ * ************************************
+ *  定义了代理对象所代表的目标对象
+ * ************************************
  * @Author mk
  * @Date 2021/6/25 14:56
  * @Version 1.0

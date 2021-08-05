@@ -4,6 +4,9 @@ import com.stock.build.DesignModel.ResponseChain.AbstractDriveChain;
 import com.stock.build.DesignModel.ResponseChain.PrepareList;
 
 /**
+ *  * ==================
+ *  * 具体责任对象
+ *  * ==================
  * @Author mk
  * @Date 2021/6/24 15:39
  * @Version 1.0
