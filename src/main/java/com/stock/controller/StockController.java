@@ -5,10 +5,20 @@ import com.stock.service.StockService;
 import com.stock.entity.Message;
 import com.stock.po.StockColletions;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,5 +69,25 @@ public class StockController {
         log.info("message1");
         log.warn("message2");
         log.error("message3");
+    }
+
+    public static void main(String[] args) {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document parse = db.parse("src/main/resources/xml/test.xml");
+            Element documentElement = parse.getDocumentElement();
+//            String tagName = documentElement.getTagName();
+            NodeList nodeList = documentElement.getElementsByTagName("student");
+            NamedNodeMap attributes = documentElement.getAttributes();
+            System.out.println(1);
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }catch (SAXException saxException){
+            saxException.printStackTrace();
+        }catch (IOException ioException){
+            ioException.printStackTrace();
+        }
+
     }
 }

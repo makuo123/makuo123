@@ -66,4 +66,20 @@ public class WordController {
         BASE64Encoder encoder = new BASE64Encoder();
         return encoder.encode(data);
     }
+
+
+    public static void main(String[] args) {
+        try {
+            int i = 2/0;
+        } catch (Exception e) {
+            //e.printStackTrace();
+            System.out.println(3);
+            return;
+        }finally {
+            System.out.println(2);
+        }
+        System.out.println(1);
+    }
+
+
 }

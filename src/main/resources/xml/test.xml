@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<class>
+    <student>
+        <firstname>cxx1</firstname>
+        <lastname>Bob1</lastname>
+        <nickname>stars1</nickname>
+        <marks>85</marks>
+    </student>
+    <student rollno="493">
+        <firstname>cxx2</firstname>
+        <lastname>Bob2</lastname>
+        <nickname>stars2</nickname>
+        <marks>85</marks>
+    </student>
+    <student rollno="593">
+        <firstname>cxx3</firstname>
+        <lastname>Bob3</lastname>
+        <nickname>stars3</nickname>
+        <marks>85</marks>
+    </student>
+</class>
+<!--
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+    <WorkBook xmlVersion="20170720" releaseVersion="9.0.0"></WorkBook>
+    <tiltle>
+        <value>111</value>
+        <myimage>http://baidu.com</myimage>
+    </tiltle>
+</data>
+-->
