@@ -1,16 +1,20 @@
 package com.stock.controller;
 
+import com.deepoove.poi.XWPFTemplate;
+import com.stock.service.poitl.PoitlService;
 import com.stock.util.WordUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,6 +41,28 @@ public class WordController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    @Autowired
+    private PoitlService poitlService;
+
+    @GetMapping("/poi")
+    public String exportWord(@RequestParam("id") String id) throws IOException{
+
+        String sql = poitlService.querySqlById(id);
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+        List<Map<String, Object>> excute = poitlService.excute(sql);
+        for (Map<String, Object> stringObjectMap : excute) {
+            objectObjectHashMap.putAll(stringObjectMap);
+        }
+        /*XWPFTemplate template = XWPFTemplate.compile("D:\\\\poi\\\\1.docx").render(
+                new HashMap<String, Object>(){{
+                    put("title", "Hi, poi-tl Word模板引擎");
+                }});*/
+
+        XWPFTemplate template = XWPFTemplate.compile("D:\\\\poi\\\\1.docx").render(objectObjectHashMap);
+        template.writeAndClose(new FileOutputStream("output.docx"));
+        return "success";
     }
 
     //获得图片的base64码

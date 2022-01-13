@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <logger name="org.apache.kafka.clients" level="info" />
+<include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+<appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <destination>192.168.11.128:9300</destination>
+    <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+</appender>
+
+<!--取消kafka日志打印-->
+<logger name="org.apache.kafka" level="off" />
+<logger name="org.apache.kafka.clients.consumer.internals.ConsumerCoordinator" level="OFF"/>
+
+<root level="INFO">
+    <appender-ref ref="LOGSTASH"/>
+    <appender-ref ref="CONSOLE"/>
+</root>
 </configuration>

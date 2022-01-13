@@ -49,7 +49,13 @@ public class MergeListNode {
      作者：LeetCode-Solution
      链接：https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/
      来源：力扣（LeetCode）
-     著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。*/
+     著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+     l1: 1 - 2 - 3
+     l2: 2 - 3 - 4
+
+
+     */
     public ListNode mergeList(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
@@ -116,9 +122,9 @@ public class MergeListNode {
 
         ListNode l2 = new ListNode(2, new ListNode(4, new ListNode(6)));
 
-        //ListNode listNode = mergeList(l1, l2);
+        ListNode listNode = mergeList(l1, l2);
 
-        ListNode listNode = mergeTwoList(l1, l2);
+//        ListNode listNode = mergeTwoList(l1, l2);
 
         System.out.println(listNode.toString());
     }
