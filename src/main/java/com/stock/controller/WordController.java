@@ -1,6 +1,8 @@
 package com.stock.controller;
 
 import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.data.PictureType;
+import com.deepoove.poi.data.Pictures;
 import com.stock.service.poitl.PoitlService;
 import com.stock.util.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,13 +57,15 @@ public class WordController {
         for (Map<String, Object> stringObjectMap : excute) {
             objectObjectHashMap.putAll(stringObjectMap);
         }
+//        objectObjectHashMap.put("urlImg", Pictures.ofUrl("https://img1.baidu.com/it/u=1407750889,3441968730&fm=253&fmt=auto&app=120&f=JPEG?w=1200&h=799",PictureType.JPEG).create());
         /*XWPFTemplate template = XWPFTemplate.compile("D:\\\\poi\\\\1.docx").render(
                 new HashMap<String, Object>(){{
                     put("title", "Hi, poi-tl Word模板引擎");
                 }});*/
-
+        objectObjectHashMap.put("urlImg", Pictures.ofUrl("http://deepoove.com/images/icecream.png", PictureType.JPEG)
+                .size(100, 100).create());
         XWPFTemplate template = XWPFTemplate.compile("D:\\\\poi\\\\1.docx").render(objectObjectHashMap);
-        template.writeAndClose(new FileOutputStream("output.docx"));
+        template.writeAndClose(new FileOutputStream("./doc/" + System.currentTimeMillis() + "output.docx"));
         return "success";
     }
 

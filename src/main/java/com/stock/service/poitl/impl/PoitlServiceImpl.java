@@ -1,5 +1,6 @@
 package com.stock.service.poitl.impl;
 
+import com.stock.entity.poitl.PoiTemplate;
 import com.stock.mapper.poitl.PoitlMapper;
 import com.stock.service.poitl.PoitlService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class PoitlServiceImpl implements PoitlService {
     @Override
     public String querySqlById(String id) {
         return poitlMapper.querySqlById(id);
+    }
+
+    @Override
+    public PoiTemplate queryTempById(String id) {
+        return poitlMapper.queryTempById(id);
     }
 
 

@@ -9,4 +9,14 @@
     <select id="querySqlById" resultType="java.lang.String">
         SELECT temp_sql AS tempsql FROM `lims_temp_sql` WHERE id = #{id}
     </select>
+    <select id="queryTempById" resultType="com.stock.entity.poitl.PoiTemplate">
+        SELECT
+            lts.id,
+            lts.temp_sql AS tempsql,
+            lts.temp_type AS tempType,
+            lts.create_time AS createTime
+        FROM
+            lims_temp_sql AS lts
+        WHERE id = #{id}
+    </select>
 </mapper>
