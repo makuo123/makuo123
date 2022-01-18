@@ -7,16 +7,18 @@
         ${sql}
     </select>
     <select id="querySqlById" resultType="java.lang.String">
-        SELECT temp_sql AS tempsql FROM `lims_temp_sql` WHERE id = #{id}
+        SELECT temp_sql AS tempsql FROM `lims_temp_info` WHERE id = #{id}
     </select>
     <select id="queryTempById" resultType="com.stock.entity.poitl.PoiTemplate">
         SELECT
-            lts.id,
-            lts.temp_sql AS tempsql,
-            lts.temp_type AS tempType,
-            lts.create_time AS createTime
+            ltf.id,
+            ltf.temp_path as tempPath,
+            ltf.temp_sql AS tempsql,
+            ltf.labor,
+            ltf.temp_type AS tempType,
+            ltf.create_time AS createTime
         FROM
-            lims_temp_sql AS lts
+            lims_temp_info AS ltf
         WHERE id = #{id}
     </select>
 </mapper>

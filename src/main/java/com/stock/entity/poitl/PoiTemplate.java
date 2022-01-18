@@ -6,11 +6,19 @@ import java.util.Date;
 
 public class PoiTemplate {
 
+    // 主键id
     private String id;
 
+    private String tempPath;
+
+    // 模板预填数据脚本
     private String tempSql;
 
+    // 模板类型：文本、表格、图标、图片
     private String tempType;
+
+    // 模板标签
+    private String labor;
 
     private Date createTime;
 
@@ -20,6 +28,14 @@ public class PoiTemplate {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTempPath() {
+        return tempPath;
+    }
+
+    public void setTempPath(String tempPath) {
+        this.tempPath = tempPath;
     }
 
     public String getTempSql() {
@@ -36,6 +52,14 @@ public class PoiTemplate {
 
     public void setTempType(String tempType) {
         this.tempType = tempType;
+    }
+
+    public String getLabor() {
+        return labor;
+    }
+
+    public void setLabor(String labor) {
+        this.labor = labor;
     }
 
     public Date getCreateTime() {

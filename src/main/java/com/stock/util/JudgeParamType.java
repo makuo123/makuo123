@@ -6,6 +6,9 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class JudgeParamType {
 
@@ -30,29 +33,32 @@ public class JudgeParamType {
         return false;
     }
 
+    public static List<Map<String, Object>> buildListValue(List<Map<String, Object>> paramList) {
+        paramList.forEach(map -> {
+            Set<Map.Entry<String, Object>> entries = map.entrySet();
+            entries.forEach(entry -> {
+                map.put(entry.getKey(), JudgeParamType.buildValue(entry.getValue()));
+            });
+        });
+        return paramList;
+    }
+
     public static Object buildValue(Object param) {
-        if (judgeImage(param)) return Pictures.ofUrl(String.valueOf(param), null);
+        if (judgeImage(param)) return Pictures.ofLocal(String.valueOf(param));
         return param;
     }
 
     public static Boolean judgeImage(Object param) {
-        File file = new File(String.valueOf(param));
         try {
+            File file = new File(String.valueOf(param));
             BufferedImage read = ImageIO.read(file);
-            if (read == null){
+            if (read == null) {
                 return false;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return false;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        JudgeParamType judgeParamType = new JudgeParamType();
-        Boolean aBoolean = judgeParamType.judgeInteger("1");
-        System.out.println(aBoolean);
-        System.out.println(judgeParamType.judgeDouble(2));
     }
 }
