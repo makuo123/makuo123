@@ -8,12 +8,20 @@ public class ChartParam implements Serializable {
     private String name;
     private Number value;
 
+    private String param;
+
     public ChartParam() {
     }
 
     public ChartParam(String name, Number value) {
         this.name = name;
         this.value = value;
+    }
+
+    public ChartParam(String name, Number value, String param) {
+        this.name = name;
+        this.value = value;
+        this.param = param;
     }
 
     public String getName() {
@@ -30,5 +38,13 @@ public class ChartParam implements Serializable {
 
     public void setValue(Number value) {
         this.value = value;
+    }
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
     }
 }

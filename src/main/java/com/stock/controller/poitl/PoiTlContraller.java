@@ -48,7 +48,6 @@ public class PoiTlContraller {
         // 3、组装模板预填数据 TODO 注： 这里应该返回 Configure 对象，和封装objectHashMap数据
         XWPFTemplate xwpfTemplate = PoitlUtil.buildData(poiTemplate, objectHashMap, resList);
         if (xwpfTemplate == null) return "false";
-
         // region
         //objectObjectHashMap.put("urlImg", Pictures.ofUrl("https://img1.baidu.com/it/u=1407750889,3441968730&fm=253&fmt=auto&app=120&f=JPEG?w=1200&h=799",PictureType.JPEG).create
         /*XWPFTemplate template = XWPFTemplate.compile("D:\\\\poi\\\\1.docx").render(
@@ -57,9 +56,8 @@ public class PoiTlContraller {
                 }});*/
 
         // endregion
-
         // 4、导出word文档
-        xwpfTemplate.writeAndClose(new FileOutputStream("./doc/" + DateUtil.getNowDate() + "" + System.currentTimeMillis() + "output.docx"));
+        xwpfTemplate.writeAndClose(new FileOutputStream("./doc/" + DateUtil.getNowDate() + "_" + System.currentTimeMillis() + "output.docx"));
         return "success";
     }
 }
