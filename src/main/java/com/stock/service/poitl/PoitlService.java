@@ -11,4 +11,6 @@ public interface PoitlService {
     String querySqlById(String id);
 
     PoiTemplate queryTempById(String id);
+
+    List<PoiTemplate> queryByTaskId(String taskId);
 }

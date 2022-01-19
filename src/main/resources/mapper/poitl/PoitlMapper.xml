@@ -21,4 +21,16 @@
             lims_temp_info AS ltf
         WHERE id = #{id}
     </select>
+    <select id="queryByTaskId" resultType="com.stock.entity.poitl.PoiTemplate">
+        SELECT
+            ltf.id,
+            ltf.temp_path as tempPath,
+            ltf.temp_sql AS tempsql,
+            ltf.labor,
+            ltf.temp_type AS tempType,
+            ltf.create_time AS createTime
+        FROM
+            lims_temp_info AS ltf
+        WHERE ltf.task_id = #{taskId}
+    </select>
 </mapper>

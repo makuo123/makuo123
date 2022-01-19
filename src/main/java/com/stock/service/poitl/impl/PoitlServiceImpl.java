@@ -30,5 +30,10 @@ public class PoitlServiceImpl implements PoitlService {
         return poitlMapper.queryTempById(id);
     }
 
+    @Override
+    public List<PoiTemplate> queryByTaskId(String taskId) {
+        return poitlMapper.queryByTaskId(taskId);
+    }
+
 
 }

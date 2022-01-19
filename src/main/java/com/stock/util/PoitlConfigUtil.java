@@ -1,6 +1,5 @@
 package com.stock.util;
 
-import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.config.Configure;
 import com.deepoove.poi.data.ChartMultiSeriesRenderData;
 import com.deepoove.poi.data.ChartSingleSeriesRenderData;
@@ -11,11 +10,12 @@ import com.stock.entity.poitl.PoiTemplate;
 import com.stock.entity.poitl.TestData;
 import com.stock.enums.poitl.PoiTempEnum;
 import lombok.extern.slf4j.Slf4j;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class PoitlUtil {
+public class PoitlConfigUtil {
 
     public static final String GRAPH_SERIES_NAME_PARAM = "name";
     public static final String GRAPH_SERIES_VALUE_PARAM = "value";
@@ -27,7 +27,7 @@ public class PoitlUtil {
      * @param resList       模板预填数据
      * @return
      */
-    public static XWPFTemplate buildData(PoiTemplate poiTemplate, HashMap<Object, Object> data, List<Map<String, Object>> resList) {
+    public static Configure buildData(PoiTemplate poiTemplate, HashMap<Object, Object> data, List<Map<String, Object>> resList) {
 
         // 图表数据
         if (poiTemplate.getTempType().endsWith(PoiTempEnum.GRAPH.toString())) {
@@ -111,7 +111,7 @@ public class PoitlUtil {
                 // 图表类型每个循环体只能有一个sql，对应一个循环标签：elements
                 data.put(poiTemplate.getLabor(), elements);
 
-                return XWPFTemplate.compile(poiTemplate.getTempPath()).render(data);
+                return null;
             }
 
             Map<Object, List<Map<String, Object>>> groupByType = resList.stream().collect(Collectors.groupingBy(map -> map.get("type")));
@@ -174,7 +174,7 @@ public class PoitlUtil {
             }
             data.put(poiTemplate.getLabor(), elements);
 
-            return XWPFTemplate.compile(poiTemplate.getTempPath()).render(data);
+            return null;
 
         }
 
@@ -190,7 +190,7 @@ public class PoitlUtil {
 
                 Configure config = Configure.builder()
                         .bind(poiTemplate.getLabor(), policy).build();
-                return XWPFTemplate.compile(poiTemplate.getTempPath(), config).render(data);
+                return config;
             }
             return null;
         }
@@ -209,7 +209,7 @@ public class PoitlUtil {
                 data.putAll(map);
             });
         }
-        return XWPFTemplate.compile(poiTemplate.getTempPath()).render(data);
+        return null;
     }
 
 }

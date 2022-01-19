@@ -14,4 +14,6 @@ public interface PoitlMapper {
     String querySqlById(@Param("id") String id);
 
     PoiTemplate queryTempById(@Param("id") String id);
+
+    List<PoiTemplate> queryByTaskId(String taskId);
 }
