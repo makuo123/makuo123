@@ -9,6 +9,7 @@ import com.stock.util.DateUtil;
 import com.stock.util.PoitlConfigUtil;
 import com.stock.util.PoitlUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.hc.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,7 +82,7 @@ public class PoiTlContraller {
     public String export2Word(@PathVariable("taskId") String taskId) throws IOException {
 
         List<PoiTemplate> list = poitlService.queryByTaskId(taskId);
-        HashMap<Object, Object> data = new HashMap<>();
+        Map<String, Object> data = new HashMap<>();
         Configure configure = null;
         for (PoiTemplate poiTemplate : list) {
 
@@ -92,7 +93,7 @@ public class PoiTlContraller {
             // 2、查询模板定义的数据sql
             List<Map<String, Object>> resList = poitlService.excute(poiTemplate.getTempSql());
 
-            // 3、组装模板预填数据 返回 Configure 对象，和封装data数据
+            // 3、组装模板预填数据 返回 Configure 对象，和封装data数据 // todo 存在config覆盖问题
             Configure configureSub = PoitlConfigUtil.buildData(poiTemplate, data, resList);
             if (configureSub != null) {
                 configure = configureSub;
@@ -109,6 +110,32 @@ public class PoiTlContraller {
         XWPFTemplate xwpfTemplate = configure == null ? XWPFTemplate.compile(list.get(0).getTempPath()).render(data) : XWPFTemplate.compile(list.get(0).getTempPath(),configure).render(data);
         // 4、导出word文档
         xwpfTemplate.writeAndClose(new FileOutputStream("./doc/" + DateUtil.getNowDate() + "_" + System.currentTimeMillis() + "output.docx"));
+        return "success";
+    }
+
+    /**
+     * 通过加载jar的方式封装模板数据
+     *
+     * @param taskId 任务id
+     */
+    @GetMapping(value = "/loadjar/export")
+    public String exportByLoadJar(String taskId, String templatePath){
+
+        templatePath = "D:\\poi\\remix.docx";
+
+        Result result = poitlService.loadJar(taskId);
+        if (result == null || result.getData() == null){
+            return "failure";
+        }
+        Map<String, Object> data = result.getData();
+        Configure configure = (Configure) result.getConfigure();
+        XWPFTemplate xwpfTemplate = result.getConfigure() == null ? XWPFTemplate.compile(templatePath).render(data) : XWPFTemplate.compile(templatePath,configure).render(data);
+        // 4、导出word文档
+        try {
+            xwpfTemplate.writeAndClose(new FileOutputStream("./doc/" + DateUtil.getNowDate() + "_" + System.currentTimeMillis() + "output.docx"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "success";
     }
 }

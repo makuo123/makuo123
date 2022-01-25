@@ -11,7 +11,7 @@ public enum PoiTempEnum {
      */
     TABLE,
     /**
-     * 图标
+     * 图表
      */
     GRAPH,
     /**

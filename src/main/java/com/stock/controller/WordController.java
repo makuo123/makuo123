@@ -28,6 +28,9 @@ import java.util.Map;
 @RequestMapping(value = "/a")
 public class WordController {
 
+    @Autowired
+    private PoitlService poitlService;
+
     @GetMapping("/export")
     public void exportSellPlan(HttpServletRequest request, HttpServletResponse response) {
         //获得数据
@@ -45,9 +48,13 @@ public class WordController {
         }
     }
 
-    @Autowired
-    private PoitlService poitlService;
 
+    /**
+     * poi-tl导出word模板数据
+     * @param id
+     * @return
+     * @throws IOException
+     */
     @GetMapping("/poi")
     public String exportWord(@RequestParam("id") String id) throws IOException{
 

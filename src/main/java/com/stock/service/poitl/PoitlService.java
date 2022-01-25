@@ -1,6 +1,7 @@
 package com.stock.service.poitl;
 
 import com.stock.entity.poitl.PoiTemplate;
+import org.hc.entity.Result;
 
 import java.util.List;
 import java.util.Map;
@@ -13,4 +14,6 @@ public interface PoitlService {
     PoiTemplate queryTempById(String id);
 
     List<PoiTemplate> queryByTaskId(String taskId);
+
+    Result loadJar(String taskId);
 }

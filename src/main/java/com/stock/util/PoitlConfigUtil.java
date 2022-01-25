@@ -19,6 +19,7 @@ public class PoitlConfigUtil {
 
     public static final String GRAPH_SERIES_NAME_PARAM = "name";
     public static final String GRAPH_SERIES_VALUE_PARAM = "value";
+    public static final String GRAPH_SERIES_TYPE_PARAM = "type";
 
     /**
      * 封装模板数据
@@ -27,27 +28,24 @@ public class PoitlConfigUtil {
      * @param resList       模板预填数据
      * @return
      */
-    public static Configure buildData(PoiTemplate poiTemplate, HashMap<Object, Object> data, List<Map<String, Object>> resList) {
+    public static Configure buildData(PoiTemplate poiTemplate, Map<String, Object> data, List<Map<String, Object>> resList) {
 
         // 图表数据
         if (poiTemplate.getTempType().endsWith(PoiTempEnum.GRAPH.toString())) {
             // 循环内的元素集合
             final List<Map<String, Object>> elements = new ArrayList<>();
-
-            // chart数据封装
-            final Map<String, Object> chartMap = new HashMap<>();
             // 图表title
             String chartTitle = "大象分布图";
             // x轴定义范围
             String[] value = {"2008", "2009", "2010"};
 
-            // 测试数据
+            // 测试数据 todo 正式数据删除这段代码
             TestData.buidTestData(resList);
 
             // 单系列图表
             if (!poiTemplate.getTempType().startsWith(PoiTempEnum.MULTIS.toString())) {
 
-                Map<Object, List<Map<String, Object>>> groupByType = resList.stream().collect(Collectors.groupingBy(map -> map.get("type")));
+                Map<Object, List<Map<String, Object>>> groupByType = resList.stream().collect(Collectors.groupingBy(map -> map.get(GRAPH_SERIES_TYPE_PARAM)));
                 for (Map.Entry<Object, List<Map<String, Object>>> objectListEntry : groupByType.entrySet()) {
                     // 图表x，y轴数据集合
                     List<ChartParam> series = new ArrayList<>();
@@ -68,17 +66,6 @@ public class PoitlConfigUtil {
                         e.printStackTrace();
                         log.error("图表类型为：{} 的数据有误！", PoiTempEnum.GRAPH.toString());
                     }
-
-                    // region =========
-                    /*  ============ 测试数据 ============= */
-                    /*series.add(new ChartParam("幼象", 200));
-                    series.add(new ChartParam("幼象", 300));
-                    series.add(new ChartParam("幼象", 400));
-                    series.add(new ChartParam("成象", 250));
-                    series.add(new ChartParam("成象", 350));
-                    series.add(new ChartParam("成象", 450));*/
-                    /*  ============ 测试数据 ============= */
-                    // endregion
 
                     // ************** 拼接chart数据 start ****************
                     for (ChartParam chartParam : series) {
@@ -114,7 +101,7 @@ public class PoitlConfigUtil {
                 return null;
             }
 
-            Map<Object, List<Map<String, Object>>> groupByType = resList.stream().collect(Collectors.groupingBy(map -> map.get("type")));
+            Map<Object, List<Map<String, Object>>> groupByType = resList.stream().collect(Collectors.groupingBy(map -> map.get(GRAPH_SERIES_TYPE_PARAM)));
             for (Map.Entry<Object, List<Map<String, Object>>> objectListEntry : groupByType.entrySet()) {
                 // 图表x，y轴数据集合
                 List<ChartParam> series = new ArrayList<>();
@@ -135,17 +122,6 @@ public class PoitlConfigUtil {
                     e.printStackTrace();
                     log.error("图表类型为：{} 的数据有误！", PoiTempEnum.GRAPH.toString());
                 }
-
-                // region =========
-                /*  ============ 测试数据 ============= */
-                    /*series.add(new ChartParam("幼象", 200));
-                    series.add(new ChartParam("幼象", 300));
-                    series.add(new ChartParam("幼象", 400));
-                    series.add(new ChartParam("成象", 250));
-                    series.add(new ChartParam("成象", 350));
-                    series.add(new ChartParam("成象", 450));*/
-                /*  ============ 测试数据 ============= */
-                // endregion
 
                 // ************** 拼接chart数据 start ****************
                 for (ChartParam chartParam : series) {
@@ -197,8 +173,8 @@ public class PoitlConfigUtil {
 
         // 文本/普通表格数据
         if (PoiTemplate.isNotBlack(poiTemplate)
-                && (poiTemplate.getTempType().equals(PoiTempEnum.TEXT.toString()))
-                || poiTemplate.getTempType().equals(PoiTempEnum.TABLE.toString()))
+                && (poiTemplate.getTempType().equals(PoiTempEnum.TEXT.toString())
+                || poiTemplate.getTempType().equals(PoiTempEnum.TABLE.toString())))
         {
             resList.forEach(map -> {
                 Set<Map.Entry<String, Object>> entries = map.entrySet();
