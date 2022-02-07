@@ -21,7 +21,7 @@ public class TestData {
         resList.add(new HashMap<String, Object>() {{
             put("type", "大象");
             put("name", "幼象");
-            put("value", 400);
+            put("value", 100);
         }});
         resList.add(new HashMap<String, Object>() {{
             put("type", "大象");

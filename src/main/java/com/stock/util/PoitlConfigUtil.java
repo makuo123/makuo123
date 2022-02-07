@@ -24,8 +24,8 @@ public class PoitlConfigUtil {
     /**
      * 封装模板数据
      * @param poiTemplate   定义的模板信息
-     * @param data          封装的数据
-     * @param resList       模板预填数据
+     * @param data          封装的完整模板数据
+     * @param resList       子模板预填数据
      * @return
      */
     public static Configure buildData(PoiTemplate poiTemplate, Map<String, Object> data, List<Map<String, Object>> resList) {
@@ -35,9 +35,9 @@ public class PoitlConfigUtil {
             // 循环内的元素集合
             final List<Map<String, Object>> elements = new ArrayList<>();
             // 图表title
-            String chartTitle = "大象分布图";
+            String chartTitle = "分布图";
             // x轴定义范围
-            String[] value = {"2008", "2009", "2010"};
+            String[] x_value = {"2008", "2009", "2010"};
 
             // 测试数据 todo 正式数据删除这段代码
             TestData.buidTestData(resList);
@@ -81,7 +81,7 @@ public class PoitlConfigUtil {
                     }
 
 
-                    Charts.ChartSingles chartSingles = Charts.ofSingleSeries(chartTitle, value);
+                    Charts.ChartSingles chartSingles = Charts.ofSingleSeries(chartTitle, x_value);
 
                     for (Map.Entry<String, Object> entry : charSubtMap.entrySet()) {
                         String key = entry.getKey();
@@ -93,7 +93,7 @@ public class PoitlConfigUtil {
 
                     // ********* 拼接chart数据 end *******************
 
-                    element.put("name", "大象");
+                    element.put("name", String.valueOf(objectListEntry.getKey()));
                     element.put("chart", chartSingleSeriesRenderData);
                     elements.add(element);
                 }
@@ -104,6 +104,7 @@ public class PoitlConfigUtil {
                 return null;
             }
 
+            // 多系列图表
             Map<Object, List<Map<String, Object>>> groupByType = resList.stream().collect(Collectors.groupingBy(map -> map.get(GRAPH_SERIES_TYPE_PARAM)));
             for (Map.Entry<Object, List<Map<String, Object>>> objectListEntry : groupByType.entrySet()) {
                 // 图表x，y轴数据集合
@@ -111,7 +112,7 @@ public class PoitlConfigUtil {
                 // 图表对象元素
                 final Map<String, Object> element = new HashMap<>();
                 // chart数据封装
-                final Map<String, Object> charSubtMap = new HashMap<>();
+                final Map<String, Object> chartSubMap = new HashMap<>();
 
                 List<Map<String, Object>> values = objectListEntry.getValue();
 
@@ -128,7 +129,7 @@ public class PoitlConfigUtil {
 
                 // ************** 拼接chart数据 start ****************
                 for (ChartParam chartParam : series) {
-                    Object valueObj = charSubtMap.get(chartParam.getName());
+                    Object valueObj = chartSubMap.get(chartParam.getName());
                     List<Number> valueList = null;
                     if (valueObj != null) {
                         valueList = (List<Number>) valueObj;
@@ -136,18 +137,19 @@ public class PoitlConfigUtil {
                         valueList = new ArrayList<>();
                     }
                     valueList.add(chartParam.getValue());
-                    charSubtMap.put(chartParam.getName(), valueList);
+                    chartSubMap.put(chartParam.getName(), valueList);
                 }
                 //多系列图表
-                Charts.ChartMultis chartMultis = Charts.ofMultiSeries(chartTitle, value);
-                for (Map.Entry<String, Object> entry : charSubtMap.entrySet()) {
+                String subChartTitle = String.valueOf(objectListEntry.getKey()) + chartTitle;
+                Charts.ChartMultis chartMultis = Charts.ofMultiSeries(subChartTitle, x_value);
+                for (Map.Entry<String, Object> entry : chartSubMap.entrySet()) {
                     String key = entry.getKey();
                     List<Number> numbers = (List<Number>) entry.getValue();
                     chartMultis.addSeries(key, numbers.toArray(new Number[]{}));
                 }
                 ChartMultiSeriesRenderData chartMultiSeriesRenderData = chartMultis.create();
                 // ********* 拼接chart数据 end *******************
-                element.put("name", "大象");
+                element.put("name", String.valueOf(objectListEntry.getKey()));
                 element.put("chart", chartMultiSeriesRenderData);
                 elements.add(element);
             }
