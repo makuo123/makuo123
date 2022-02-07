@@ -90,6 +90,9 @@ public class PoitlConfigUtil {
                     }
 
                     ChartSingleSeriesRenderData chartSingleSeriesRenderData = chartSingles.create();
+
+                    // ********* 拼接chart数据 end *******************
+
                     element.put("name", "大象");
                     element.put("chart", chartSingleSeriesRenderData);
                     elements.add(element);
