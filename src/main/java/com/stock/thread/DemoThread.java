@@ -2,7 +2,6 @@ package com.stock.thread;
 
 import org.junit.Test;
 
-import java.util.PriorityQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -14,6 +13,22 @@ public class DemoThread implements Runnable{
     @Override
     public void run() {
         System.out.println(" DemoThread run ! ");
+    }
+
+    /**
+     * 字符’0‘的整数数值为48，
+     * 字符串转字符后与’0‘相减，得到整数数值
+     */
+    @Test
+    public void test1(){
+        String str = "123";
+        int a = '0';
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            int d = c - a;
+            System.out.println(d);
+        }
+
     }
 
     @Test

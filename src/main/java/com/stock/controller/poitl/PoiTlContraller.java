@@ -73,14 +73,21 @@ public class PoiTlContraller {
     }
 
     /**
-     * 复合文本渲染
+     * 复合文本渲染(正式版)
      * @param taskId
      * @return
      * @throws IOException
      */
     @GetMapping("/export/template/{taskId}")
-    public String export2Word(@PathVariable("taskId") String taskId) throws IOException {
+    public String export2Word(@PathVariable("taskId") String taskId, @PathVariable("templateId") String templateId) throws IOException {
 
+        // TODO 需要根据模板id来查对于的封装数据的sql
+        /*
+        * 1、新建一张报告模板表，保存报告模板存放地址
+        * 2、报告封装数据sql表，关联报告模板表主键id、sql语句
+        * 3、lims页面根据检测类型不同，选择所需的模板
+        * 4、根据选择的模板id，查询对应的sql，封装数据
+        * */
         List<PoiTemplate> list = poitlService.queryByTaskId(taskId);
         Map<String, Object> data = new HashMap<>();
         Configure configure = null;
