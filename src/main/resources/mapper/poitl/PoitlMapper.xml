@@ -33,4 +33,15 @@
             lims_temp_info AS ltf
         WHERE ltf.task_id = #{taskId}
     </select>
+    <select id="queryByRefPrimaryId" resultType="com.stock.entity.poitl.PoiTemplateRef">
+        SELECT
+            id,
+            ref_temp_sql AS refTempSql,
+            temp_info_id AS tempInfoId,
+            data_type AS dataType
+        FROM
+            lims_temp_info_ref
+        WHERE
+            temp_info_id = #{id}
+    </select>
 </mapper>

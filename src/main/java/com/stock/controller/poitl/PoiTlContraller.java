@@ -4,6 +4,9 @@ import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.config.Configure;
 import com.deepoove.poi.data.Pictures;
 import com.stock.entity.poitl.PoiTemplate;
+import com.stock.entity.poitl.PoiTemplateRef;
+import com.stock.entity.poitl.PoiTemplateRefData;
+import com.stock.enums.poitl.PoiTempEnum;
 import com.stock.service.poitl.PoitlService;
 import com.stock.util.DateUtil;
 import com.stock.util.PoitlConfigUtil;
@@ -11,6 +14,7 @@ import com.stock.util.PoitlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.hc.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileOutputStream;
@@ -100,8 +104,25 @@ public class PoiTlContraller {
             // 2、查询模板定义的数据sql
             List<Map<String, Object>> resList = poitlService.excute(poiTemplate.getTempSql());
 
+            // 图表数据
+            List<PoiTemplateRefData> refDataList = null; // 封装图表所需的数据，如：图表名称，x,y轴区间值
+            if (poiTemplate.getTempType().endsWith(PoiTempEnum.GRAPH.toString())) {
+
+                List<PoiTemplateRef> refList = poitlService.queryByRefPrimaryId(poiTemplate.getId());
+
+                if (!CollectionUtils.isEmpty(refList)){
+                    for (PoiTemplateRef poiTemplateRef : refList) {
+                        PoiTemplateRefData poiTemplateRefData = new PoiTemplateRefData();
+                        List<Map<String, Object>> refData = poitlService.excute(poiTemplateRef.getRefTempSql());
+                        poiTemplateRefData.setData(refData);
+                        poiTemplateRefData.setDataType(poiTemplateRef.getDataType());
+                        refDataList.add(poiTemplateRefData);
+                    }
+                }
+            }
+
             // 3、组装模板预填数据 返回 Configure 对象，和封装data数据 // todo 存在config覆盖问题
-            Configure configureSub = PoitlConfigUtil.buildData(poiTemplate, data, resList);
+            Configure configureSub = PoitlConfigUtil.buildData(poiTemplate, data, resList, refDataList);
             if (configureSub != null) {
                 configure = configureSub;
             }

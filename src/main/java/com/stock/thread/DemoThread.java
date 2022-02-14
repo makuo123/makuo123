@@ -28,7 +28,17 @@ public class DemoThread implements Runnable{
             int d = c - a;
             System.out.println(d);
         }
+    }
 
+    @Test
+    public void testWrapper(){
+        // false 保证类比较的是引用的地址值，要用equals()
+        Integer a1 = 1;
+        Integer b1 = 1;
+        System.out.println(a1 == b1); // true
+        Integer a = 143;
+        Integer b = 143;
+        System.out.println(a == b); // false
     }
 
     @Test

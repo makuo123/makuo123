@@ -1,6 +1,7 @@
 package com.stock.service.poitl.impl;
 
 import com.stock.entity.poitl.PoiTemplate;
+import com.stock.entity.poitl.PoiTemplateRef;
 import com.stock.mapper.poitl.PoitlMapper;
 import com.stock.service.poitl.PoitlService;
 import com.stock.util.spi.ModuleClassLoader;
@@ -106,6 +107,12 @@ public class PoitlServiceImpl implements PoitlService {
         }
         result.setData(data);
         return result;
+    }
+
+    @Override
+    public List<PoiTemplateRef> queryByRefPrimaryId(String id) {
+
+        return poitlMapper.queryByRefPrimaryId(id);
     }
 
 

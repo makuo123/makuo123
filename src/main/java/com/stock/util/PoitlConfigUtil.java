@@ -5,9 +5,7 @@ import com.deepoove.poi.data.ChartMultiSeriesRenderData;
 import com.deepoove.poi.data.ChartSingleSeriesRenderData;
 import com.deepoove.poi.data.Charts;
 import com.deepoove.poi.policy.HackLoopTableRenderPolicy;
-import com.stock.entity.poitl.ChartParam;
-import com.stock.entity.poitl.PoiTemplate;
-import com.stock.entity.poitl.TestData;
+import com.stock.entity.poitl.*;
 import com.stock.enums.poitl.PoiTempEnum;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,9 +24,10 @@ public class PoitlConfigUtil {
      * @param poiTemplate   定义的模板信息
      * @param data          封装的完整模板数据
      * @param resList       子模板预填数据
+     * @param refDataList
      * @return
      */
-    public static Configure buildData(PoiTemplate poiTemplate, Map<String, Object> data, List<Map<String, Object>> resList) {
+    public static Configure buildData(PoiTemplate poiTemplate, Map<String, Object> data, List<Map<String, Object>> resList, List<PoiTemplateRefData> refDataList) {
 
         // 图表数据
         if (poiTemplate.getTempType().endsWith(PoiTempEnum.GRAPH.toString())) {
@@ -36,8 +35,11 @@ public class PoitlConfigUtil {
             final List<Map<String, Object>> elements = new ArrayList<>();
             // 图表title
             String chartTitle = "分布图";
+
+            List<PoiTemplateRefData> xRefList = refDataList.stream().filter(refTemp -> refTemp.getDataType() == 1).collect(Collectors.toList());
             // x轴定义范围
-            String[] x_value = {"2008", "2009", "2010"};
+            String[] x_value = xRefList.get(0).getData().toArray(new String[]{});
+            //String[] x_value = {"2008", "2009", "2010"};
 
             // 测试数据 todo 正式数据删除这段代码
             TestData.buidTestData(resList);
