@@ -1,10 +1,9 @@
-package com.stock.kafka.sender;
+package com.stock.util.kafka.sender;
 
-import com.stock.kafka.channel.Source;
+import com.stock.util.kafka.channel.Source;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.support.MessageBuilder;
 
 /**

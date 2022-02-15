@@ -1,9 +1,8 @@
-package com.stock.kafka.receiver;
+package com.stock.util.kafka.receiver;
 
-import com.stock.kafka.channel.Sink;
+import com.stock.util.kafka.channel.Sink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 
 /**

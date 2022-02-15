@@ -1,4 +1,4 @@
-package com.stock.kafka.channel;
+package com.stock.util.kafka.channel;
 
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
