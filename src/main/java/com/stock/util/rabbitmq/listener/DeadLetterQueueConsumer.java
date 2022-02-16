@@ -16,8 +16,6 @@ import static com.stock.util.rabbitmq.config.DelayQueueConfig.*;
 @Slf4j
 @Component
 public class DeadLetterQueueConsumer {
-    //public static final String DEAD_LETTER_QUEUEA_NAME = "delay.queue.demo.deadletter.queuea";
-    //public static final String DEAD_LETTER_QUEUEB_NAME = "delay.queue.demo.deadletter.queueb";
 
     @RabbitListener(queues = DEAD_LETTER_QUEUEA_NAME)
     public void receiveA(Message message, Channel channel) throws IOException {
