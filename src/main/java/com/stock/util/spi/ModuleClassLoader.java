@@ -1,5 +1,6 @@
 package com.stock.util.spi;
 
+import com.stock.util.SpringContextUtil;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.stereotype.Component;

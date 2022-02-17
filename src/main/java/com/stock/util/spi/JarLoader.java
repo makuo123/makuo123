@@ -1,6 +1,7 @@
 package com.stock.util.spi;
 
 
+import com.stock.util.SpringContextUtil;
 import com.stock.util.spi.classloader.ClassloaderResponsity;
 import org.hc.service.IReportDataService;
 

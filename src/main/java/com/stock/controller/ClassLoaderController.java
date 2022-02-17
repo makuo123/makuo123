@@ -17,7 +17,7 @@ package com.stock.controller;
 
 import com.stock.util.JarLoader;
 import com.stock.util.spi.ModuleClassLoader;
-import com.stock.util.spi.SpringContextUtil;
+import com.stock.util.SpringContextUtil;
 import com.stock.util.spi.classloader.ClassloaderResponsity;
 import org.hc.service.IReportDataService;
 import org.hc.utils.JDBCUtils;

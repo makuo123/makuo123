@@ -1,4 +1,4 @@
-package com.stock.util.spi;
+package com.stock.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

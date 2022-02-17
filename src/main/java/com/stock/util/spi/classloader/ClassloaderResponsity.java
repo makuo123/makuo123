@@ -16,7 +16,7 @@ package com.stock.util.spi.classloader;
  */
 
 import com.stock.util.spi.ModuleClassLoader;
-import com.stock.util.spi.SpringContextUtil;
+import com.stock.util.SpringContextUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
