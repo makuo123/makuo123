@@ -6,12 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+@EnableAsync  // 开启可异步执行方法
 @EnableAdminServer
 @EnableScheduling
 @SpringBootApplication(scanBasePackages = {"com.stock"})
@@ -26,7 +28,7 @@ public class StockApplication {
 
         System.out.println("\n----------------------------------------------------------\n\t" +
                 "Application UReport is running! Access URLs:\n\t" +
-                "Local: \t\thttp://localhost:" + port + path + "/ureport/designer\n\t" +
+                "Local: \t\thttp://"+ ip +":" + port + path + "/ureport/designer\n\t" +
                 "----------------------------------------------------------");
 
     }

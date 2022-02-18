@@ -1,4 +1,4 @@
-package com.stock.util.volidator;
+package com.stock.util.volidator.unique;
 
 public class User {
     private String id;

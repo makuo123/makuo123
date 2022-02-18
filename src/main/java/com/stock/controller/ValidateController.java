@@ -1,9 +1,11 @@
 package com.stock.controller;
 
-import com.stock.util.volidator.NotConflictUser;
-import com.stock.util.volidator.UniqueUser;
-import com.stock.util.volidator.User;
-import com.stock.util.volidator.UserRepository;
+import com.stock.test.async.AsyncService;
+import com.stock.util.volidator.tenant.SameTenant;
+import com.stock.util.volidator.unique.NotConflictUser;
+import com.stock.util.volidator.unique.UniqueUser;
+import com.stock.util.volidator.unique.User;
+import com.stock.util.volidator.unique.UserRepository;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/validate")
 @Slf4j
 @Validated
 public class ValidateController {
@@ -34,6 +36,20 @@ public class ValidateController {
         User editUser = userRepository.save(user);
         log.info("update user is {}",editUser);
         return editUser;
+    }
+
+    @GetMapping("teant")
+    public void volidatorTeant(@SameTenant Long str){
+        System.out.println("ssdf");
+    }
+
+    @Autowired
+    private AsyncService asyncService;
+    @GetMapping("async")
+    public void asyncTest(){
+        asyncService.test1();
+        asyncService.test2();
+        System.out.println("ssdf");
     }
 }
 

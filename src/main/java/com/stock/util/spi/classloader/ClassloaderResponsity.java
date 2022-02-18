@@ -1,18 +1,8 @@
 package com.stock.util.spi.classloader;
 
-
-/*
- * 	此源代码为北京圣博润高新技术股份有限公司资产，非北京圣博润
- * 高新技术股份有限公司公司员工严禁保留、拷贝、修改此代码。
- *
- * Copyright 北京圣博润高新技术股份有限公司. All rights reserved.
- */
-
 /*
  * @ClassName:ClassloaderResponsity
- * @Description TODO
- * @Author 曹传红
- * @Time 2019-06-18 14:45
+ * @Description
  */
 
 import com.stock.util.spi.ModuleClassLoader;

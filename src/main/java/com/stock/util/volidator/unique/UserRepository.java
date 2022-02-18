@@ -1,4 +1,4 @@
-package com.stock.util.volidator;
+package com.stock.util.volidator.unique;
 
 import org.springframework.stereotype.Service;
 
