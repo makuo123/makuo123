@@ -11,7 +11,6 @@ import java.lang.annotation.*;
 /**
  * uid是否属于当前上下文租户
  * 注：当被校验对象为空时，校验为通过，所以如果需要校验对象必填，请自行结合相关校验注解
- * Created by Zhang JinLong(150429) on 2016-09-18.
  */
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)

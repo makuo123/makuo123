@@ -53,15 +53,24 @@ public class OrderServiceStrategy {
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException, ClassNotFoundException {
 
-        OrderServiceStrategy orderServiceStrategy = new OrderServiceStrategy();
+        //OrderServiceStrategy orderServiceStrategy = new OrderServiceStrategy();
         Order order = new Order();
         order.setOrderType(OrderType.M01);
 
-        orderServiceStrategy.discount(order);
+        discount(order);
     }
 
 
-    public double discount(Order order) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    /**
+     * 核心思想是拿到需要执行逻辑的serviceImpl，并执行代码，应用到了反射思想
+     *
+     * @param order
+     * @return
+     * @throws ClassNotFoundException
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     */
+    public static double discount(Order order) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
 
         if (!OrderServiceStrategy.getMap().containsKey(order.getOrderType().name())) {
             new RuntimeException("不支持的业务类型");
