@@ -3,6 +3,9 @@ package com.stock.algorithm;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * @param <V> 缓存容量
+ */
 public class LRUCache<V> {
 
     /**
@@ -10,10 +13,11 @@ public class LRUCache<V> {
      */
     private int capacity = 1024;
     /**
-     * Node记录表
+     * Node记录表  记录数据
      */
     private Map<String, ListNode<String, V>> table = new ConcurrentHashMap<>();
     /**
+     * 用双向链表记录数据的访问频率，头节点最近访问，尾节点访问频率低，内存满后淘汰尾节点
      * 双向链表头部
      */
     private ListNode<String, V> head;
@@ -23,12 +27,19 @@ public class LRUCache<V> {
     private ListNode<String, V> tail;
 
 
+    /**
+     * 指定内存容量
+     *
+     * @param capacity 容量值大小
+     */
     public LRUCache(int capacity) {
         this();
         this.capacity = capacity;
     }
 
-
+    /**
+     * 初始化 LRUCache,默认内存容量
+     */
     public LRUCache() {
         head = new ListNode<>();
         tail = new ListNode<>();
@@ -125,7 +136,8 @@ public class LRUCache<V> {
         cache.put("key4", node4);
         cache.get("key2");
         cache.put("key5", node5);
-        cache.get("key2");
+        ListNode key2 = cache.get("key2");
+        System.out.println(key2);
     }
 }
 
