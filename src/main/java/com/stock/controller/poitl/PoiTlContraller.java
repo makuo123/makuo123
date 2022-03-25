@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.rmi.server.ExportException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,7 +106,7 @@ public class PoiTlContraller {
             List<Map<String, Object>> resList = poitlService.excute(poiTemplate.getTempSql());
 
             // 图表数据
-            List<PoiTemplateRefData> refDataList = null; // 封装图表所需的数据，如：图表名称，x,y轴区间值
+            List<PoiTemplateRefData> refDataList = new ArrayList<>(); // 封装图表所需的数据，如：图表名称，x,y轴区间值
             if (poiTemplate.getTempType().endsWith(PoiTempEnum.GRAPH.toString())) {
 
                 List<PoiTemplateRef> refList = poitlService.queryByRefPrimaryId(poiTemplate.getId());
