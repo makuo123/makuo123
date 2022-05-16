@@ -1,11 +1,10 @@
 package com.stock.controller;
 
-import com.stock.po.Stock;
-import com.stock.service.StockService;
 import com.stock.entity.Message;
+import com.stock.po.Stock;
 import com.stock.po.StockColletions;
+import com.stock.service.StockService;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +68,24 @@ public class StockController {
         log.info("message1");
         log.warn("message2");
         log.error("message3");
+
+//        Hashtable
+//        ConcurrentHashMap
+
+
     }
+
+   /* public static void main(String[] args) {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            Date parse = sf.parse("2019-07-13");
+            Date parse1 = sf.parse("2021-12-08");
+            long time = parse1.getTime() - parse.getTime();
+            System.out.println(time/1000/60/60/24);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }*/
 
     public static void main(String[] args) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
