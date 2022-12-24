@@ -261,7 +261,7 @@
         </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.bstek.ureport/ureport2-console -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.bstek.ureport</groupId>
             <artifactId>ureport2-console</artifactId>
             <version>2.3.0-SNAPSHOT</version>
@@ -271,9 +271,9 @@
                     <groupId>commons-io</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.bstek.ureport</groupId>
             <artifactId>ureport2-core</artifactId>
             <version>2.3.0-SNAPSHOT</version>
@@ -306,7 +306,7 @@
                     <groupId>com.bstek.ureport</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
         <!--我使用的oracle驱动，  如果你使用的mysql。那么自己换成你需要的版本-->
         <!--<dependency>
             <groupId>com.oracle.ojdbc</groupId>
