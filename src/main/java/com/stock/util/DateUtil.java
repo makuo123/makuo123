@@ -1,17 +1,13 @@
 package com.stock.util;
 
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.ByteArrayInputStream;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -54,7 +50,7 @@ public class DateUtil {
     public static void main(String[] args) {
 
         // 解析xml
-        Document document = DocumentHelper.createDocument();
+        /*Document document = DocumentHelper.createDocument();
         Element param = document.addElement("param");
         Element name = param.addElement("name");
         name.addText("张三");
@@ -90,6 +86,47 @@ public class DateUtil {
 
 //        System.out.println("iO3H4AG7d83w7dnlrrLlh5PYVAEDtcLO".length());
         byte[] bytes = "smartnest_lims_ability".getBytes(StandardCharsets.UTF_8);
-        System.out.println(Arrays.toString(bytes));
+        System.out.println(Arrays.toString(bytes));*/
+    }
+}
+
+class XMLParse {
+    public static void main(String[] args) throws Exception{
+
+        String xml = "<param>\n" +
+                "  <name label = \"name\" unit = '单位'>张三</name>\n" +
+                "  <age>12</age>\n" +
+                "</param>";
+
+        System.out.println(statusResult(xml));
+    }
+
+    public static String statusResult(String xml) throws Exception {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = factory.newDocumentBuilder();
+        Document document = db.parse(new ByteArrayInputStream(xml.getBytes()));
+
+        NodeList node = document.getElementsByTagName("name");
+        //for(int i=0;i<node.getLength();i++){
+        Element element = (Element) node.item(0);
+        // 获取属性学号
+//            String name = element.getAttribute("name");
+//            System.out.println("name：" + name);
+        String value = null;
+        try {
+            value = element.getAttribute("unit");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        //System.out.println("value：" + value);
+        return value;
+        //获取值
+//            content = element.getElementsByTagName("value").item(0).getFirstChild().getNodeValue();
+//            System.out.println("value：" + content);
+
+
+        //}
+
+
     }
 }
