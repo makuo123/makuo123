@@ -1,21 +1,14 @@
 package com.stock.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URLEncoder;
-import java.util.Date;
-import java.util.Map;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import freemarker.template.Configuration;
-import freemarker.template.Template;
+import java.io.*;
+import java.net.URLEncoder;
+import java.util.Map;
 
 /**
  * @Author mk

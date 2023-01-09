@@ -1,6 +1,6 @@
 package com.stock.config;
 
-import com.bstek.ureport.console.UReportServlet;
+/*import com.bstek.ureport.console.UReportServlet;
 import com.bstek.ureport.definition.datasource.BuildinDatasource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,4 +44,4 @@ public class UreportConfig implements BuildinDatasource {
         }
         return null;
     }
-}
+}*/
