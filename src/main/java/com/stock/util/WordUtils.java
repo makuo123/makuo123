@@ -1,21 +1,18 @@
 package com.stock.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URLEncoder;
-import java.util.Date;
-import java.util.Map;
+import com.itextpdf.text.pdf.PdfReader;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
+import org.apache.poi.xslf.usermodel.XMLSlideShow;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import freemarker.template.Configuration;
-import freemarker.template.Template;
+import java.io.*;
+import java.net.URLEncoder;
+import java.util.Map;
 
 /**
  * @Author mk
@@ -90,5 +87,128 @@ public class WordUtils {
             throw new RuntimeException(ex);
         }
         return f;
+    }
+
+
+    public static class FilePagesUtils {
+        /**
+         *
+         * @param fileInputStream  文件流
+         * @param fileType  文件后缀
+         * @return
+         * @throws IOException
+         */
+        public static int filesPage(InputStream fileInputStream, String fileType) throws IOException {
+            int count = 0;
+            if (".doc".equals(fileType)) {
+                count = countWord2003Page(fileInputStream);
+            }
+            if (".docx".equals(fileType)) {
+                count = countWord2007Page(fileInputStream);
+            }
+            if (".pdf".equals(fileType)) {
+                count = countPdfPage(fileInputStream);
+            }
+            if (".pptx".equals(fileType)) {
+                count = countPPTXPage(fileInputStream);
+            }
+            /*if (".ppt".equals(fileType)) {
+                count = countPPTPage(fileInputStream);
+            }*/
+            return count;
+        }
+
+        /**
+         * 计算PDF格式文档的页数
+         */
+        public static int countPdfPage(InputStream fileInputStream) {
+            int pageCount = 0;
+            PdfReader reader = null;
+            try {
+                reader = new PdfReader(fileInputStream);
+                pageCount = reader.getNumberOfPages();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                reader.close();
+            }
+            return pageCount;
+        }
+
+        /**
+         * 计算PPTX格式文档的页数
+         * @param fileInputStream
+         * @return
+         * @throws IOException
+         */
+        /*public static int countPPTPage(InputStream fileInputStream) throws IOException {
+            int pageCount = 0;
+            ZipSecureFile.setMinInflateRatio(-1.0d);
+
+            HSLFSlideShow hslfSlideShow = new HSLFSlideShow(fileInputStream);
+            try {
+                pageCount = hslfSlideShow.getSlides().size();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                fileInputStream.close();
+            }
+            return pageCount;
+
+        }*/
+
+        /**
+         * 计算PPTX格式文档的页数
+         */
+        public static int countPPTXPage(InputStream fileInputStream) throws IOException {
+            int pageCount = 0;
+            ZipSecureFile.setMinInflateRatio(-1.0d);
+            try {
+                XMLSlideShow pptxFile = new XMLSlideShow(fileInputStream);
+                pageCount = pptxFile.getSlides().size();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                fileInputStream.close();
+            }
+            return pageCount;
+        }
+
+        /**
+         * 计算WORD2007(*.docx)格式文档的页数
+         */
+        public static int countWord2007Page(InputStream fileInputStream) throws IOException {
+            int pageCount = 0;
+            ZipSecureFile.setMinInflateRatio(-1.0d);
+            XWPFDocument docx = null;
+            try {
+                docx = new XWPFDocument(fileInputStream);
+                pageCount = docx.getProperties().getExtendedProperties().getUnderlyingProperties().getPages();//总页数
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                docx.close();
+            }
+            return pageCount;
+        }
+
+        /**
+         * 计算WORD2003(*.doc)格式文档的页数
+         */
+        public static int countWord2003Page(InputStream fileInputStream) throws IOException {
+            /*int pageCount = 0;
+            WordExtractor doc = null;
+            ZipSecureFile.setMinInflateRatio(-1.0d);
+            try {
+                doc = new WordExtractor(fileInputStream);//.doc格式Word文件提取器
+                pageCount = doc.getSummaryInformation().getPageCount();//总页数
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                doc.close();
+            }
+            return pageCount;*/
+            return 0;
+        }
     }
 }

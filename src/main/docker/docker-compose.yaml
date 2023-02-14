@@ -1,0 +1,17 @@
+version: '3'
+services:
+  lims:
+    build:
+      context: ./lims
+    container_name: lims
+    image: lims
+    environment:
+      - TZ=Asia/Shanghai
+      - spring.profiles.active=test
+    volumes:
+      - /home/smartnest/lims/logs:/home/logs
+    ports:
+      - 9527:9527
+    privileged: true
+    restart: always
+    network_mode: host
