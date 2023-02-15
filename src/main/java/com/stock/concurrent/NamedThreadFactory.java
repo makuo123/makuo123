@@ -1,4 +1,4 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.concurrent.ThreadFactory;

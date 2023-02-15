@@ -1,9 +1,6 @@
-package com.alibaba.ageiport.common.concurrent;
-
-
-import com.alibaba.ageiport.common.exception.ExceptionUtils;
-import com.alibaba.ageiport.common.logger.Logger;
-import com.alibaba.ageiport.common.logger.LoggerFactory;
+package com.stock.concurrent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -51,7 +48,7 @@ public class BlockPolicyExecutionHandler implements RejectedExecutionHandler {
                     name, taskCount, completedTaskCount, largestPoolSize, poolSize, activeCount);
             executor.getQueue().put(r);
         } catch (InterruptedException e) {
-            ExceptionUtils.throwException(e);
+            //ExceptionUtils.throwException(e);
         }
     }
 }

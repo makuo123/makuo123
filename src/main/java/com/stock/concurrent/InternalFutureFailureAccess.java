@@ -1,4 +1,4 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
 public abstract class InternalFutureFailureAccess {
     protected InternalFutureFailureAccess() {

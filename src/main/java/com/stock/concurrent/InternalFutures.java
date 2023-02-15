@@ -1,4 +1,4 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
 public final class InternalFutures {
     public static Throwable tryInternalFastPathGetFailure(InternalFutureFailureAccess future) {

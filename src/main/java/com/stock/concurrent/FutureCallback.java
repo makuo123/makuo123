@@ -1,4 +1,4 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
 
 import java.util.concurrent.ExecutionException;
@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
  * A callback for accepting the results of a {@link Future} computation
  * asynchronously.
  *
- * <p>To attach to a {@link ListenableFuture} use Futures#addCallback.
+ * <p>To attach to a {@link com.alibaba.ageiport.common.concurrent.ListenableFuture} use Futures#addCallback.
  *
  * @author Anthony Zana
  * @since 10.0

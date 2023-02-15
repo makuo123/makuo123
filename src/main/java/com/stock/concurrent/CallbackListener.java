@@ -1,4 +1,4 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;

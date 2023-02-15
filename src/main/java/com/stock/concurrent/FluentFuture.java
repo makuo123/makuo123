@@ -1,11 +1,14 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public abstract class FluentFuture<V> extends AbstractFuture<V> {
 
     abstract static class TrustedFuture<V> extends FluentFuture<V>
-            implements AbstractFuture.Trusted<V> {
+            implements Trusted<V> {
         @Override
         public final V get() throws InterruptedException, ExecutionException {
             return super.get();

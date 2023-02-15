@@ -1,7 +1,7 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
-import com.alibaba.ageiport.common.logger.Logger;
-import com.alibaba.ageiport.common.logger.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
 

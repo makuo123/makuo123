@@ -1,5 +1,7 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
 
+
+import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.Callable;

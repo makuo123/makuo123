@@ -1,8 +1,12 @@
-package com.alibaba.ageiport.common.concurrent;
+package com.stock.concurrent;
+
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureTask;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RunnableFuture;
+
 /**
  * A {@link RunnableFuture} that also implements the {@link ListenableFuture} interface.
  *
