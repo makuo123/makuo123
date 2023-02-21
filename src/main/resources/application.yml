@@ -30,3 +30,13 @@ shenyan:
   ipport: http://106.52.142182:8002
   token: 554b5205xc9c7x4db1x835fxa8382014b145
   enable: true #是否调用远程接口 true 开启，false 关闭
+
+
+eb5:
+  protocol: "http://"
+  ip: "192.168.1.24"
+#    - "http://192.168.1.24"
+#    - "http://192.168.1.29"
+  url: "/url"
+  path: ${eb5.protocol}${eb5.ip}${eb5.url}
+

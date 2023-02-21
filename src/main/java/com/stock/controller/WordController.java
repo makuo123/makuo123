@@ -1,15 +1,16 @@
 package com.stock.controller;
 
 import com.stock.util.WordUtils;
+import com.stock.util.component.EB5Config;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sun.misc.BASE64Encoder;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,5 +66,15 @@ public class WordController {
         }
         BASE64Encoder encoder = new BASE64Encoder();
         return encoder.encode(data);
+    }
+
+    @Resource
+    private EB5Config eb5Config;
+
+    @GetMapping("/b")
+    public void list(){
+        String[] ip = eb5Config.getIp();
+        System.out.println(eb5Config.getPath());
+        System.out.println(ip[0] + "\n" + eb5Config.getUrl());
     }
 }
