@@ -56,6 +56,7 @@ public class ImgUtil {
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException {
+
         String path = "C:\\Users\\makuo\\Desktop\\01.png";
         File file = new File(path);
         System.out.println(ImgUtil.imgType(new FileInputStream(file)));
