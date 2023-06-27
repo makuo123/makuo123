@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="text"></div>
+<script>
+    let text = "这是一个演示文本，用于展示打字效果。";
+    let index = 0;
+    function typeEffect() {
+        let element = document.getElementById("text");
+        element.innerHTML += text.charAt(index);
+        index++;
+        if (index >= text.length) {
+            clearInterval(timer);
+        }
+    }
+    let timer = setInterval(typeEffect, 100);
+
+</script>
+</body>
+</html>

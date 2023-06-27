@@ -1,15 +1,16 @@
 package com.stock.controller;
 
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.data.PictureType;
 import com.deepoove.poi.data.Pictures;
 import com.stock.service.poitl.PoitlService;
 import com.stock.util.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.web.bind.annotation.*;
 import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -116,6 +117,76 @@ public class WordController {
             System.out.println(2);
         }
         System.out.println(1);
+    }
+
+    @GetMapping("/c")
+    public Object redirect(HttpServletRequest request, HttpServletResponse response){
+        String login = "http://192.168.1.188:1088/api/blade-auth/oauth/token";
+        String url = request.getParameter("url");
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("tenantId", "000000");
+        map.put("username", "admin");
+        map.put("password", "e10adc3949ba59abbe56e057f20f883e");
+        map.put("grant_type", "captcha");
+        map.put("scope", "all");
+        map.put("type", "account");
+        map.put("_timestamp", 1677722931875l);
+
+        HttpRequest httpRequest = HttpUtil.createPost(login)
+                .header("Authorization", "Basic YmFzZV9zeXN0ZW06YTgwNTEzNWVmM2M4OWM4OTdjNDgxZGRmNDlhM2Q5MDk=")
+                .header("Tenant-Id", "000000")
+                .header("Captcha-Code", "5VERQ")
+                .header("Captcha-Key", "8ebe4c08e2b9a2f58fe9e4a699fe452f");
+        String body = httpRequest.form(map).execute().body();
+        JSONObject user = JSONObject.parseObject(body);
+        System.out.println(body);
+        try {
+            request.setAttribute("Authorization", "Basic YmFzZV9zeXN0ZW06Yzk3NjUwZDdkYzM0NjFiOTkwMzczNWM5NWI0YTgzZDI=");
+            request.setAttribute("Blade-Auth", "bearer " + user.get("access_token"));
+            response.setHeader("Authorization", "Basic YmFzZV9zeXN0ZW06Yzk3NjUwZDdkYzM0NjFiOTkwMzczNWM5NWI0YTgzZDI=");
+            response.setHeader("Blade-Auth", "bearer " + user.get("access_token"));
+            response.sendRedirect(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    /**
+     *全局变量
+     * @param key
+     * @param value
+     * @return
+     */
+    @GetMapping("/d")
+    public Object cache(String key , String value){
+        InstanceCache instanceCache = InstanceCache.getInstance();
+        instanceCache.setCache(key, value);
+        Map cache = instanceCache.getCache();
+        return cache;
+    }
+
+    private static final String OAUTH_URL = "http://192.168.1.188:8100/oauth/token";
+
+    @PostMapping("/login")
+    public OAuth2AccessToken login(String clientId,String clientSecret, String userName, String passWorld){
+        OAuth2AccessToken token = null;
+        try {
+            token = Oauth2Util.login(OAUTH_URL,clientId, clientSecret, userName, passWorld);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return token;
+    }
+
+    @GetMapping("dd")
+    public String redirectUrl(HttpServletRequest request, HttpServletResponse response){
+        try {
+            response.sendRedirect("http://baidu.com");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "success";
     }
 
 

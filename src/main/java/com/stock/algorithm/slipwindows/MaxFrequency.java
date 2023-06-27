@@ -1,6 +1,7 @@
 package com.stock.algorithm.slipwindows;
 
 import org.junit.Test;
+import org.springframework.orm.hibernate5.SpringBeanContainer;
 
 import java.util.Arrays;
 
@@ -18,7 +19,7 @@ import java.util.Arrays;
  * 输出：3
  * 解释：对第一个元素执行 3 次递增操作，对第二个元素执 2 次递增操作，此时 nums = [4,4,4] 。
  * 4 是数组中最高频元素，频数是 3 。
- * <p>
+ * <p> 不重复字符串长度
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/frequency-of-the-most-frequent-element
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
