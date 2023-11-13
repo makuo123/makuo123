@@ -1,0 +1,10 @@
+<root>
+    <person name="Tom" age="30">
+        <address>Beijing, China</address>
+        <phone>123456789</phone>
+    </person>
+    <person name="Jerry" age="25">
+        <address>New York, USA</address>
+        <phone>987654321</phone>
+    </person>
+</root>
